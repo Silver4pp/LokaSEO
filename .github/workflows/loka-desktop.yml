@@ -1,0 +1,85 @@
+name: LokaSEO desktop (Windows)
+
+# Membangun aplikasi Windows LokaSEO.exe dan mengunggahnya sebagai artefak.
+# Hanya membaca source dan mengunggah artefak; tidak menerbitkan rilis dan tidak
+# mengirim apa pun ke layanan lain.
+on:
+  push:
+    branches: [main]
+    paths:
+      - "desktop/**"
+      - "studio/**"
+      - "src/**"
+      - "tests/lokaseo/**"
+      - "package.json"
+      - "pnpm-lock.yaml"
+      - ".github/workflows/loka-desktop.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  windows:
+    name: Build Windows x64
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.30.1
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: pnpm
+      - name: Pasang dependency
+        run: pnpm install --frozen-lockfile
+      - name: Bangun antarmuka
+        run: pnpm build:loka
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Uji server lokal
+        run: python -m unittest discover -s desktop/tests -t desktop -v
+      - name: Pasang PyInstaller, pystray, dan pywebview
+        run: python -m pip install --disable-pip-version-check pyinstaller pystray pillow pywebview
+      - name: Bangun aplikasi
+        run: python -m PyInstaller desktop/alat/lokaseo.spec --noconfirm --distpath desktop/dist --workpath desktop/build
+      - name: Susun paket
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force desktop/release | Out-Null
+          Copy-Item desktop/dist/LokaSEO.exe desktop/release
+          Copy-Item desktop/dist/LokaSEO-console.exe desktop/release
+          Copy-Item LICENSE desktop/release/LICENSE.txt
+          Copy-Item docs/lokaseo/cara-pakai-desktop.txt desktop/release/CARA-PAKAI.txt
+          Get-ChildItem desktop/release | Select-Object Name, Length
+          Compress-Archive -Path desktop/release/* -DestinationPath LokaSEO-Windows.zip -Force
+      - name: Cek aplikasi berjalan
+        shell: pwsh
+        run: |
+          $process = Start-Process -FilePath "desktop\dist\LokaSEO-console.exe" -ArgumentList "--offline","--no-open","--port","3111" -PassThru
+          Start-Sleep -Seconds 6
+          try {
+            $home = Invoke-WebRequest -Uri "http://127.0.0.1:3111/" -UseBasicParsing -TimeoutSec 10
+            if ($home.StatusCode -ne 200) { throw "Beranda tidak 200: $($home.StatusCode)" }
+            $headers = $home.Headers
+            if ($headers["Content-Security-Policy"] -notmatch "script-src 'self'") { throw "CSP tidak sesuai" }
+            $ai = Invoke-WebRequest -Uri "http://127.0.0.1:3111/api/loka-ai/generate" -Method POST -UseBasicParsing -TimeoutSec 10 `
+              -ContentType "application/json" -Headers @{ Origin = "http://127.0.0.1:3111" } `
+              -Body '{"connections":[{"id":"c1","label":"Uji","provider":"openai","model":"gpt-4.1-mini","apiKey":"sk-uji","enabled":true}],"task":"ideas","context":{"business":"Kopi","city":"","domain":"","topic":"kopi","notes":""},"maxTokens":256}'
+            if ($ai.Content -notmatch '"attempts":\s*\[\]') { throw "Mode luring memanggil penyedia: $($ai.Content)" }
+            $stop = Invoke-WebRequest -Uri "http://127.0.0.1:3111/hentikan" -UseBasicParsing -TimeoutSec 10
+            if ($stop.Content -notmatch "Hentikan aplikasi") { throw "Halaman hentikan tidak tersedia" }
+            $info = Invoke-WebRequest -Uri "http://127.0.0.1:3111/api/lokaseo/info" -UseBasicParsing -TimeoutSec 10
+            if ($info.Content -notmatch '"mode":\s*"desktop"') { throw "Info mode desktop tidak benar: $($info.Content)" }
+            Write-Host "Aplikasi Windows menjawab dengan benar, termasuk halaman hentikan."
+          } finally {
+            Stop-Process -Id $process.Id -Force -ErrorAction SilentlyContinue
+          }
+      - uses: actions/upload-artifact@v4
+        with:
+          name: LokaSEO-Windows-x64
+          path: LokaSEO-Windows.zip
+          if-no-files-found: error
+          retention-days: 30

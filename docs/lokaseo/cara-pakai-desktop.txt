@@ -1,0 +1,183 @@
+LokaSEO — aplikasi ruang kerja SEO untuk Windows
+================================================
+
+MULAI
+-----
+1. Klik dua kali LokaSEO.exe.
+2. Peramban terbuka dan menampilkan LokaSEO. Semua pekerjaan berjalan di
+   komputer Anda; tidak ada data yang dikirim ke layanan daring.
+3. Ikon LokaSEO muncul di area jam (system tray) di kanan bawah layar.
+   Klik ikon untuk membuka kembali, klik kanan lalu "Hentikan LokaSEO"
+   untuk menutup aplikasi.
+
+MENGENTIKAN APLIKASI
+--------------------
+Menutup tab peramban TIDAK menghentikan aplikasi. Pilih salah satu cara:
+- Klik kanan ikon LokaSEO di area jam, lalu pilih "Hentikan LokaSEO".
+- Buka halaman http://127.0.0.1:3000/hentikan dan tekan tombol "Hentikan aplikasi".
+- Bila memakai LokaSEO-console.exe: tutup jendela konsol atau tekan Ctrl+C.
+
+JIKA PERAMBAN TIDAK TERBUKA
+-------------------------
+- Buka sendiri alamat yang ditampilkan aplikasi, biasanya
+  http://127.0.0.1:3000
+- Jalankan LokaSEO-console.exe. Versi ini menampilkan alamat, lokasi data, dan
+  pesan galat di jendela hitam, sehingga mudah ditelusuri.
+- Ikon tray tidak muncul (misalnya dipakai lewat Remote Desktop): pakai
+  halaman http://127.0.0.1:3000/hentikan untuk menghentikan aplikasi.
+- Tanpa ikon tray sama sekali: jalankan LokaSEO-console.exe --no-tray dan
+  hentikan dengan Ctrl+C.
+
+PENGATURAN BERGUNA
+------------------
+  LokaSEO-console.exe --offline        matikan seluruh panggilan AI
+  LokaSEO-console.exe --port 3000      pakai port tetap
+  LokaSEO-console.exe --no-open        jangan buka peramban otomatis
+  LokaSEO-console.exe --no-tray        tanpa ikon tray; hentikan dengan Ctrl+C
+  LokaSEO-console.exe --window native  jendela aplikasi (bila pywebview ada)
+  LokaSEO-console.exe --verbose        tampilkan catatan rinci
+
+BILA ADA YANG TIDAK BERES: CEK KESIAPAN
+--------------------------------------
+Di bagian paling bawah halaman radar ada "Kesiapan aplikasi di komputer ini":
+
+- Klik "Periksa kesiapan". Muncul 11 butir dengan tanda [LULUS], [PERHATIAN],
+  atau [GAGAL] — versi aplikasi, folder data, peramban, penjadwal, dan seterusnya.
+- Klik "Salin laporan", lalu tempelkan di percakapan bila Anda melaporkan masalah.
+  Laporan itu tidak memuat kunci API, isi halaman, maupun daftar alamat Anda.
+- [PERHATIAN] bukan kerusakan: artinya belum diatur atau belum dipakai.
+
+Bila antarmuka tidak mau terbuka sama sekali, jalankan dari Command Prompt:
+
+    LokaSEO-console.exe --kesiapan
+
+Laporannya tercetak di layar dan tersimpan sebagai laporan-kesiapan.txt di folder
+data (alamatnya tertulis di baris terakhir).
+
+Panduan lengkap 15 menit untuk menguji di Windows: docs\lokaseo\cara-uji-windows.txt
+
+MEMINDAHKAN DAFTAR SASARAN (UNDUH / IMPOR)
+-----------------------------------------
+Di bagian "Sasaran yang dipantau" ada dua tombol:
+
+- "Unduh daftar sasaran" menyimpan daftar Anda sebagai berkas JSON
+  (sasaran-radar-TANGGAL.json) ke folder Unduhan. Berkas itu bisa Anda simpan
+  sebagai cadangan, kirim lewat surel atau WhatsApp, atau bawa ke komputer lain.
+- "Impor daftar sasaran" membaca berkas seperti itu — juga berkas teks biasa
+  yang berisi satu alamat per baris.
+
+Yang perlu Anda tahu sebelum menekan impor:
+
+- Impor MENGGABUNG. Sasaran yang sudah ada tidak dihapus, yang baru ditambahkan,
+  yang berubah diperbarui.
+- Impor TIDAK menghubungi situs mana pun. Halaman baru diperiksa saat pemeriksaan
+  berikutnya, jadi tidak ada situs orang yang tiba-tiba dibuka.
+- Sesudah impor muncul ringkasan jujur: berapa ditambahkan, berapa sudah ada,
+  dan berapa ditolak beserta alasannya. Berkas yang salah dijawab dengan kalimat
+  yang menjelaskan, bukan dengan diam.
+- Batas satu berkas: 1 MB atau 500 alamat.
+
+Untuk baris perintah (opsional):
+  python -m lokaradar export sasaran.json --sasaran
+  python -m lokaradar import sasaran.json --dry-run
+
+RADAR: HALAMAN BER-JAVASCRIPT
+------------------------------
+Sebagian situs menyusun isinya dengan JavaScript, sehingga halaman terbaca kosong
+kalau diambil biasa. Radar mengatasinya dengan peramban yang SUDAH ADA di komputer
+Anda — Microsoft Edge (bawaan Windows 10/11) atau Google Chrome. Tidak ada yang
+perlu diunduh, dan tidak ada perintah yang perlu diketik.
+
+- Buka halaman radar, lihat bagian "Peramban untuk halaman ber-JavaScript".
+- Bila tertulis "Siap: Microsoft Edge …", radar otomatis memakai mode "auto":
+  halaman yang terbaca pendek akan diambil ulang dengan peramban.
+- Tombol "Uji rendering" membuktikan rangkaiannya bekerja sungguhan: radar membuka
+  satu peramban, menjalankan JavaScript di halaman uji miliknya sendiri, lalu
+  melaporkan hasilnya. Tidak ada situs luar yang dihubungi saat pengujian ini.
+- Peramban dijalankan tanpa profil Anda: akun, riwayat, dan ekstensi tidak ikut
+  terbawa, dan folder datanya dibuang setelah selesai.
+- Gambar, video, dan font tidak diunduh supaya situs orang tidak dibebani. Teks,
+  harga, dan data terstruktur tetap terbaca utuh.
+
+Bila tertulis "Tidak ada peramban", radar tetap berjalan seperti biasa: halaman
+ber-JavaScript hanya terbaca sebagian dan laporan akan mengatakannya. Yang bisa
+dilakukan: pasang Microsoft Edge atau Google Chrome.
+
+RADAR PEMANTAUAN SITUS
+----------------------
+Radar memantau halaman publik pesaing dan mitra Anda: harga, layanan, data
+terstruktur, dan rating. Semua berjalan di komputer ini.
+
+1. Di ruang kerja LokaSEO, klik "Radar pemantauan situs" (atau buka
+   http://127.0.0.1:3000/radar).
+2. Jenis usaha diambil otomatis dari proyek LokaSEO yang sedang aktif. Bila
+   belum ada, isi manual di bagian "Pengaturan usaha".
+3. Tambahkan alamat halaman pesaing, lalu tekan "Periksa sekarang". Pemeriksaan
+   berjalan di latar belakang; halaman ini boleh ditutup.
+4. Perubahan yang terbaca muncul di "Perubahan terakhir"; laporan lengkapnya
+   lewat tombol "Lihat laporan terbaru".
+
+PEMERIKSAAN OTOMATIS
+--------------------
+Radar baru berguna kalau dijalankan rutin, jadi ada satu tugas Windows yang bisa
+memeriksa sendiri setiap hari:
+
+1. Di halaman radar, bagian "Pemeriksaan otomatis", pilih jam (bawaan 07:00) dan
+   ulangan (setiap hari atau setiap minggu).
+2. Tekan "Aktifkan jadwal". Windows akan memanggil aplikasi ini sekali sehari;
+   peramban tidak perlu terbuka dan aplikasi tidak perlu berjalan.
+3. Tombol "Jalankan tugasnya sekarang" membuktikan rangkaiannya bekerja — hasil
+   pemeriksaan muncul di daftar perubahan beberapa saat kemudian.
+4. Tombol "Matikan jadwal" menghapus tugas itu kembali.
+
+Yang perlu diketahui:
+- Tidak perlu hak administrator; tugas dibuat untuk pengguna yang sedang masuk.
+- Radar sengaja tidak bisa dijadwalkan lebih sering dari sekali sehari supaya
+  tidak membebani situs orang.
+- Bila komputer mati atau tidur pada jam itu, pemeriksaan tersebut terlewat dan
+  tidak menyusul sendiri.
+- Di Linux atau macOS, halaman radar menampilkan baris cron yang bisa disalin.
+
+Catatan penting:
+- Jalankan tanpa --offline bila ingin memeriksa halaman. Mode luring menolak
+  seluruh permintaan keluar, dan radar mengatakannya terus terang.
+- Data radar tersimpan di %APPDATA%\LokaSEO\radar. Salin folder itu untuk
+  mencadangkannya.
+- Radar menghormati robots.txt, memberi jeda antar permintaan ke host yang
+  sama, dan menyebut identitasnya (LokaRadar) pada setiap permintaan.
+- Pemeriksaan berjalan satu per satu, maksimal 40 sasaran per putaran.
+- Halaman yang isinya disusun JavaScript dirender memakai Microsoft Edge atau
+  Google Chrome yang sudah terpasang (lihat bagian di atas). Scrapling beserta
+  Chromium unduhannya tidak ikut dibundel karena menambah lebih dari 70 MB tanpa
+  memberi kemampuan tambahan di sini.
+
+PRIVASI DAN DATA
+----------------
+- Server hanya mendengarkan 127.0.0.1. Perangkat lain di jaringan yang sama
+  tidak dapat membukanya.
+- Tidak ada telemetri, tidak ada pembaruan otomatis, dan antarmuka tidak
+  memuat font, analytics, atau gambar dari internet.
+- Data proyek SEO Anda tersimpan di komputer ini:
+      %APPDATA%\LokaSEO            (catatan aplikasi dan data radar)
+      penyimpanan antarmuka LokaSEO (data proyek)
+- API key AI hanya berada di memori selama aplikasi berjalan dan hilang saat
+  dimuat ulang. Bila Anda memakai fitur AI, prompt dan key dikirim langsung
+  dari komputer ini ke penyedia yang Anda pilih (OpenAI, OpenRouter, DeepSeek,
+  atau Groq). Tidak ada server perantara dari proyek ini.
+
+CATATAN PENTING
+---------------
+- Berkas ini belum ditandatangani secara digital. Windows SmartScreen dapat
+  menampilkan peringatan saat pertama dijalankan: pilih "More info" lalu
+  "Run anyway". Untuk menghilangkannya, aplikasi perlu sertifikat penandatangan
+  kode (code signing) berbayar.
+- LokaSEO adalah pengembangan turunan dari OpenSEO yang berlisensi MIT.
+  Lisensi asli disertakan dalam berkas LICENSE.txt.
+- Aplikasi ini belum diuji oleh pihak ketiga dan tidak menjamin keamanan
+  mutlak. Gunakan sesuai kebutuhan dan simpan cadangan proyek Anda dari menu
+  Laporan.
+
+BANTUAN
+-------
+Dokumentasi: docs/lokaseo/aplikasi-desktop.md di dalam paket source.
+Masalah dan usulan: terbuka melalui halaman repository proyek.

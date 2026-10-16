@@ -144,7 +144,7 @@ export function Sidebar({
           onClick={() => setOpenMobile(false)}
           className="px-1 pb-2 text-base font-semibold text-sidebar-foreground"
         >
-          OpenSEO
+          LokaSEO
         </Link>
         <ProjectSwitcher
           activeProjectId={projectId}

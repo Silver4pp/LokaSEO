@@ -1,0 +1,11 @@
+{
+  "extends": "../tsconfig.json",
+  "include": [
+    "main.tsx",
+    "vite.config.ts",
+    "../src/client/features/lokaseo/*.ts",
+    "../src/client/features/lokaseo/*.tsx",
+    "serve.ts"
+  ],
+  "exclude": ["../src/client/features/lokaseo/*.test.ts"]
+}

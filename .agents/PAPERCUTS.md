@@ -45,3 +45,5 @@ data, or sensitive paths.
 - [x] `2026-07-10T21:28:46Z` — `codex` — BadSEO builds require a package-local install even when root typechecking works. Resolved 2026-09-05: local-development docs and `badseo/README.md` explain both dependency installs.
 - [x] `2026-07-10T21:32:10Z` — `codex` — BadSEO has no package-local Prettier. Resolved 2026-09-05: its README and local-development docs give the root formatter command.
 - [x] `2026-09-05T00:44:38Z` — `codex` — The older, undated BadSEO note described wrong-origin sitemap URLs under direct `wrangler dev` and a broken `pnpm --filter badseo audit` command. Resolved 2026-09-05 through documentation: use the existing Vite dev server and package audit script; the README states the expected sitemap origin and the harness usage comment now matches. Direct Wrangler behavior was not reverified or changed.
+
+- [x] `2026-10-12` — `Arena agent` — Petunjuk Node.js 20 upstream tidak cocok dengan plugin Cloudflare terkunci yang memakai registerHooks. README fork kini menetapkan Node.js 22.15+ untuk aplikasi penuh; tes modul memakai konfigurasi Vitest terpisah tanpa plugin Cloudflare.

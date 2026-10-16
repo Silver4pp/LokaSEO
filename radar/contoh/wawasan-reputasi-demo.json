@@ -1,0 +1,338 @@
+{
+  "schema": "lokaradar.insight.v1",
+  "dibuat_pada": "2026-10-14T08:27:55Z",
+  "sejak": "2026-09-14T08:27:55Z",
+  "ringkasan": {
+    "sasaran": 3,
+    "perubahan": 0,
+    "per_tingkat": {},
+    "per_jenis": {}
+  },
+  "sasaran": [
+    {
+      "url": "https://kopi-bogor.example/",
+      "label": "Kopi Bogor (usaha saya)",
+      "jenis": "reputasi",
+      "diperiksa_pada": "2026-10-13T08:27:55Z",
+      "status": 200,
+      "judul": "Kopi Bogor (usaha saya)",
+      "deskripsi": "",
+      "harga": [],
+      "harga_terendah": null,
+      "rating": {
+        "value": 4.61,
+        "count": 121,
+        "scale": 5
+      },
+      "data_terstruktur": [],
+      "ringkas_halaman": {
+        "jumlah_kata": null,
+        "judul_utama": null,
+        "gambar_tanpa_alt": null,
+        "noindex": null
+      },
+      "perubahan": []
+    },
+    {
+      "url": "https://kedai-pajajaran.example/",
+      "label": "Kedai Pajajaran",
+      "jenis": "reputasi",
+      "diperiksa_pada": "2026-10-13T08:27:55Z",
+      "status": 200,
+      "judul": "Kedai Pajajaran",
+      "deskripsi": "",
+      "harga": [],
+      "harga_terendah": null,
+      "rating": {
+        "value": 4.65,
+        "count": 470,
+        "scale": 5
+      },
+      "data_terstruktur": [],
+      "ringkas_halaman": {
+        "jumlah_kata": null,
+        "judul_utama": null,
+        "gambar_tanpa_alt": null,
+        "noindex": null
+      },
+      "perubahan": []
+    },
+    {
+      "url": "https://warung-sempurna.example/",
+      "label": "Warung Sempurna",
+      "jenis": "reputasi",
+      "diperiksa_pada": "2026-10-13T08:27:55Z",
+      "status": 200,
+      "judul": "Warung Sempurna",
+      "deskripsi": "",
+      "harga": [],
+      "harga_terendah": null,
+      "rating": {
+        "value": 4.38,
+        "count": 99,
+        "scale": 5
+      },
+      "data_terstruktur": [],
+      "ringkas_halaman": {
+        "jumlah_kata": null,
+        "judul_utama": null,
+        "gambar_tanpa_alt": null,
+        "noindex": null
+      },
+      "perubahan": []
+    }
+  ],
+  "reputasi": {
+    "periode_hari": 30,
+    "dibuat_pada": "2026-10-14T08:27:55Z",
+    "ambang_rating": 4.0,
+    "ambang_laju_mingguan": 1.0,
+    "ringkasan": {
+      "usaha": 3,
+      "dengan_rating": 3,
+      "rata_rata_rating": 4.55,
+      "total_ulasan": 690,
+      "total_ulasan_baru": 96,
+      "tanpa_rating": 0
+    },
+    "peringkat": [
+      {
+        "target_id": 2,
+        "label": "Kedai Pajajaran",
+        "url": "https://kedai-pajajaran.example/",
+        "jenis": "reputasi",
+        "sumber": "halaman",
+        "periode_hari": 30,
+        "jumlah_potret": 4,
+        "titik": [
+          {
+            "tanggal": "2026-09-16T08:27:55Z",
+            "status": 200,
+            "rating": 4.68,
+            "ulasan": 410,
+            "skala": 5
+          },
+          {
+            "tanggal": "2026-09-25T08:27:55Z",
+            "status": 200,
+            "rating": 4.68,
+            "ulasan": 431,
+            "skala": 5
+          },
+          {
+            "tanggal": "2026-10-04T08:27:55Z",
+            "status": 200,
+            "rating": 4.66,
+            "ulasan": 455,
+            "skala": 5
+          },
+          {
+            "tanggal": "2026-10-13T08:27:55Z",
+            "status": 200,
+            "rating": 4.65,
+            "ulasan": 470,
+            "skala": 5
+          }
+        ],
+        "rating": 4.65,
+        "skala": 5,
+        "rating_awal": 4.68,
+        "perubahan_rating": -0.03,
+        "ulasan": 470,
+        "ulasan_awal": 410,
+        "ulasan_baru": 60,
+        "laju_mingguan": 15.56,
+        "hari_terukur": 27.0,
+        "pangsa_ulasan": 68.1,
+        "tanda": [],
+        "peringkat": 1
+      },
+      {
+        "target_id": 1,
+        "label": "Kopi Bogor (usaha saya)",
+        "url": "https://kopi-bogor.example/",
+        "jenis": "reputasi",
+        "sumber": "halaman",
+        "periode_hari": 30,
+        "jumlah_potret": 4,
+        "titik": [
+          {
+            "tanggal": "2026-09-16T08:27:55Z",
+            "status": 200,
+            "rating": 4.3,
+            "ulasan": 96,
+            "skala": 5
+          },
+          {
+            "tanggal": "2026-09-25T08:27:55Z",
+            "status": 200,
+            "rating": 4.42,
+            "ulasan": 104,
+            "skala": 5
+          },
+          {
+            "tanggal": "2026-10-04T08:27:55Z",
+            "status": 200,
+            "rating": 4.55,
+            "ulasan": 112,
+            "skala": 5
+          },
+          {
+            "tanggal": "2026-10-13T08:27:55Z",
+            "status": 200,
+            "rating": 4.61,
+            "ulasan": 121,
+            "skala": 5
+          }
+        ],
+        "rating": 4.61,
+        "skala": 5,
+        "rating_awal": 4.3,
+        "perubahan_rating": 0.31,
+        "ulasan": 121,
+        "ulasan_awal": 96,
+        "ulasan_baru": 25,
+        "laju_mingguan": 6.48,
+        "hari_terukur": 27.0,
+        "pangsa_ulasan": 17.5,
+        "tanda": [],
+        "peringkat": 2
+      },
+      {
+        "target_id": 3,
+        "label": "Warung Sempurna",
+        "url": "https://warung-sempurna.example/",
+        "jenis": "reputasi",
+        "sumber": "halaman",
+        "periode_hari": 30,
+        "jumlah_potret": 4,
+        "titik": [
+          {
+            "tanggal": "2026-09-16T08:27:55Z",
+            "status": 200,
+            "rating": 4.8,
+            "ulasan": 88,
+            "skala": 5
+          },
+          {
+            "tanggal": "2026-09-25T08:27:55Z",
+            "status": 200,
+            "rating": 4.66,
+            "ulasan": 92,
+            "skala": 5
+          },
+          {
+            "tanggal": "2026-10-04T08:27:55Z",
+            "status": 200,
+            "rating": 4.51,
+            "ulasan": 97,
+            "skala": 5
+          },
+          {
+            "tanggal": "2026-10-13T08:27:55Z",
+            "status": 200,
+            "rating": 4.38,
+            "ulasan": 99,
+            "skala": 5
+          }
+        ],
+        "rating": 4.38,
+        "skala": 5,
+        "rating_awal": 4.8,
+        "perubahan_rating": -0.42,
+        "ulasan": 99,
+        "ulasan_awal": 88,
+        "ulasan_baru": 11,
+        "laju_mingguan": 2.85,
+        "hari_terukur": 27.0,
+        "pangsa_ulasan": 14.3,
+        "tanda": [
+          "rating_turun"
+        ],
+        "peringkat": 3
+      }
+    ],
+    "perhatian": [
+      {
+        "target_id": 3,
+        "label": "Warung Sempurna",
+        "url": "https://warung-sempurna.example/",
+        "jenis": "reputasi",
+        "sumber": "halaman",
+        "periode_hari": 30,
+        "jumlah_potret": 4,
+        "titik": [
+          {
+            "tanggal": "2026-09-16T08:27:55Z",
+            "status": 200,
+            "rating": 4.8,
+            "ulasan": 88,
+            "skala": 5
+          },
+          {
+            "tanggal": "2026-09-25T08:27:55Z",
+            "status": 200,
+            "rating": 4.66,
+            "ulasan": 92,
+            "skala": 5
+          },
+          {
+            "tanggal": "2026-10-04T08:27:55Z",
+            "status": 200,
+            "rating": 4.51,
+            "ulasan": 97,
+            "skala": 5
+          },
+          {
+            "tanggal": "2026-10-13T08:27:55Z",
+            "status": 200,
+            "rating": 4.38,
+            "ulasan": 99,
+            "skala": 5
+          }
+        ],
+        "rating": 4.38,
+        "skala": 5,
+        "rating_awal": 4.8,
+        "perubahan_rating": -0.42,
+        "ulasan": 99,
+        "ulasan_awal": 88,
+        "ulasan_baru": 11,
+        "laju_mingguan": 2.85,
+        "hari_terukur": 27.0,
+        "pangsa_ulasan": 14.3,
+        "tanda": [
+          "rating_turun"
+        ],
+        "peringkat": 3
+      }
+    ],
+    "belum_terperiksa": []
+  },
+  "lokaseo": {
+    "ide_konten": [
+      {
+        "judul": "Cara membalas ulasan pelanggan dengan sopan dan tetap manusiawi",
+        "alasan": "Warung Sempurna: rating sekarang 4.38 (ambang 4.0).",
+        "kata_kunci_usulan": [
+          "membalas ulasan pelanggan",
+          "layanan pelanggan"
+        ],
+        "sumber": "LokaRadar"
+      }
+    ],
+    "cek_list": [
+      {
+        "judul": "Tindak lanjuti ulasan yang menurunkan rating",
+        "keterangan": "Warung Sempurna: rating 4.38, perubahan -0.42.",
+        "prioritas": "tinggi"
+      }
+    ],
+    "catatan": []
+  },
+  "catatan_pemakaian": [
+    "Data diambil dari halaman publik tanpa login, dengan jeda sopan dan menghormati robots.txt.",
+    "Hanya angka agregat (rating, jumlah ulasan) yang disimpan; identitas penulis ulasan tidak diambil.",
+    "Angka dapat berubah kapan saja; verifikasi sebelum memakai untuk keputusan penting."
+  ]
+}

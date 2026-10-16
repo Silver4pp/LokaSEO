@@ -1,5 +1,14 @@
 minimumReleaseAge: 11520
 minimumReleaseAgeExclude:
+  # Targeted security fixes found by the 2026-10-12 audit.
+  - "seroval@1.6.3"
+  - "source-map-js@1.2.2"
+  - "proxy-addr@2.0.8"
+  - "sharp@0.35.5"
+  - "shell-quote@1.11.0"
+  - "smol-toml@1.9.0"
+  - "@modelcontextprotocol/client@2.2.0"
+  - "@modelcontextprotocol/sdk@1.31.0"
   - "@every-app/*"
   # TEMPORARY (remove after 2026-10-01): DOMPurify security fix, GHSA-p98j-92pf-mc4p.
   - "dompurify@3.4.16"
@@ -50,6 +59,11 @@ minimumReleaseAgeExclude:
 # To prune once a parent catches up: delete the line, run `pnpm install`, and
 # keep it deleted if `pnpm audit` stays clean.
 overrides:
+  # Security audit 2026-10-12: patched versions, same major as parents.
+  seroval: "^1.6.3"
+  source-map-js: "^1.2.2"
+  proxy-addr: "^2.0.8"
+  "@modelcontextprotocol/sdk": "^1.31.0"
   # GHSA-4x5r-pxfx-6jf8 — waiting on @tanstack/devtools-vite
   "@babel/core": "^7.29.6"
   # September 2026 recursion/CPU DoS fixes plus earlier advisories — just-bash/shadcn
@@ -73,15 +87,15 @@ overrides:
   # GHSA-q8mj-m7cp-5q26 — waiting on @modelcontextprotocol/sdk
   qs: "^6.16.0"
   # GHSA-w7jw-789q-3m8p — waiting on @tanstack/devtools-vite
-  shell-quote: "^1.8.4"
+  shell-quote: "^1.11.0"
   # GHSA-v3rj-xjv7-4jmq — waiting on knip
-  smol-toml: "^1.7.1"
+  smol-toml: "^1.9.0"
   # September 2026 TLS/cache/DoS fixes plus earlier advisories — cheerio/miniflare
   undici: "^7.29.1"
   # GHSA-67mh-4wv8-2f99 — update drizzle-kit's legacy loader instead of ignoring it.
   "@esbuild-kit/core-utils>esbuild": "^0.25.12"
   # GHSA-rgj7-g3m4-5g8c — Miniflare 4 pins 0.34.5; 0.35.4 fixes bundled libheif.
-  "miniflare>sharp": "0.35.4"
+  "miniflare>sharp": "0.35.5"
   # September 2026 advisories: keep these fixes within each supported major.
   "@ai-sdk/provider-utils@4": "^4.0.33"
   "@hono/node-server@1": "^1.19.15"

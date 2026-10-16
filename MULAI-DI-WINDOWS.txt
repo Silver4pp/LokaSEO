@@ -1,0 +1,55 @@
+MULAI DI WINDOWS — TIGA LANGKAH
+===============================
+
+LEBIH CEPAT: pakai paket siap pakai LokaSEO-Windows.zip yang berisi
+LokaSEO-console.exe. Di sana tidak perlu memasang Python sama sekali — cukup
+ekstrak lalu klik dua kali. Berkas yang sedang Anda baca ini untuk jalur sumber
+(mis. bila ingin memeriksa kodenya sendiri atau membangun ulang .exe).
+
+
+Yang Anda butuhkan: Python 3.10 atau lebih baru, dan itu saja.
+Tidak perlu Node.js, tidak perlu pnpm, tidak perlu pip install apa pun —
+antarmukanya sudah dibangun di dalam paket ini (folder loka-release).
+
+
+CARA 1 — LANGSUNG JALAN (paling cepat)
+--------------------------------------
+1. Pasang Python bila belum ada: https://www.python.org/downloads/windows/
+   PENTING saat memasang: centang "Add python.exe to PATH".
+2. Ekstrak paket ini ke folder biasa, misalnya C:\LokaSEO.
+   (Jangan dijalankan dari dalam zip.)
+3. Klik dua kali file:  desktop\run.py
+
+Beberapa detik kemudian peramban terbuka sendiri ke 127.0.0.1.
+Jendela hitam yang muncul itu konsolnya — biarkan terbuka.
+
+
+CARA 2 — MEMBUAT BERKAS .EXE SENDIRI
+------------------------------------
+1. Pasang Python (seperti di atas).
+2. Klik kanan pada desktop, pilih "Open in Terminal" (atau PowerShell),
+   lalu tulis dua baris ini:
+
+       cd C:\LokaSEO
+       powershell -ExecutionPolicy Bypass -File desktop\alat\build-windows.ps1 -SkipFrontend
+
+3. Setelah selesai (sekitar 2-5 menit), berkasnya ada di:
+
+       desktop\dist\LokaSEO.exe          aplikasi utama
+       desktop\dist\LokaSEO-console.exe  versi konsol untuk menelusuri masalah
+
+Proses itu memasang PyInstaller sendiri; Anda tidak perlu menyiapkan apa pun.
+
+
+YANG PENTING DIKETAHUI
+----------------------
+- Bila di paket Anda ada folder desktop/dist (paket sumber saja, tidak ada di
+  paket siap pakai), isinya biner LINUX dari komputer pengembangan. Jangan
+  dijalankan di Windows — Windows akan menolaknya. Pakai Cara 1 atau Cara 2
+  di atas.
+- Aplikasi ini berjalan hanya di komputer Anda: 127.0.0.1, tanpa unggahan.
+- Untuk menghentikannya: tombol "Hentikan aplikasi" di halaman radar, atau
+  tutup jendela hitamnya.
+- Setelah aplikasi jalan, buka panduan uji 15 menit:
+  docs\lokaseo\cara-uji-windows.txt
+- Daftar kemampuan dan batasannya: docs\lokaseo\cara-pakai-desktop.txt

@@ -1,0 +1,1312 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Radar pemantauan — LokaSEO</title>
+<style>
+  :root { --hijau: #1f5c40; --hijau-tua: #17472f; --kertas: #f4f7f4; --tinta: #1a2b22;
+          --garis: #d8e3da; --kuning: #8a6100; --merah: #a3281f; }
+  * { box-sizing: border-box; }
+  body { font-family: system-ui, sans-serif; margin: 0; background: var(--kertas);
+         color: var(--tinta); line-height: 1.55; }
+  header { background: #fff; border-bottom: 1px solid var(--garis); padding: 1rem 1.25rem; }
+  .bungkus { max-width: 62rem; margin: 0 auto; padding: 1.25rem; }
+  h1 { font-size: 1.35rem; margin: 0 0 .25rem; }
+  h2 { font-size: 1.05rem; margin: 1.75rem 0 .6rem; }
+  p.ket { margin: 0; color: #4a5b51; font-size: .95rem; }
+  a { color: var(--hijau); }
+  .kembali { font-size: .9rem; }
+  .chip { display: inline-flex; gap: .35rem; align-items: baseline; background: var(--kertas);
+          border: 1px solid var(--garis); border-radius: 999px; padding: .35rem .8rem;
+          margin: .5rem .4rem 0 0; font-size: .88rem; }
+  .chip b { font-variant-numeric: tabular-nums; }
+  .baris-tombol { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; }
+  button { font: inherit; padding: .65rem 1rem; border: 1px solid var(--hijau); border-radius: 10px;
+           background: var(--hijau); color: #fff; cursor: pointer; min-height: 44px; }
+  button.kedua { background: #fff; color: var(--hijau); }
+  button:hover { background: var(--hijau-tua); }
+  button.kedua:hover { background: #eaf2ec; }
+  button:focus-visible { outline: 3px solid #7fbf9c; outline-offset: 2px; }
+  button[disabled] { opacity: .55; cursor: not-allowed; }
+  .kartu { background: #fff; border: 1px solid var(--garis); border-radius: 12px; padding: 1rem 1.1rem;
+           box-shadow: 0 1px 2px rgba(16, 32, 24, .05); }
+  .kartu + .kartu { margin-top: .9rem; }
+  .sasaran { display: flex; flex-wrap: wrap; gap: .75rem; align-items: flex-start;
+             justify-content: space-between; }
+  .sasaran h3 { margin: 0 0 .2rem; font-size: 1rem; }
+  .sasaran .url { color: #4a5b51; font-size: .85rem; word-break: break-all; }
+  .angka { font-size: .9rem; color: #3c4d44; }
+  ul.daftar { list-style: none; margin: 0; padding: 0; }
+  ul.daftar li { padding: .6rem 0; border-top: 1px solid var(--garis); }
+  ul.daftar li:first-child { border-top: 0; }
+  .tingkat { display: inline-block; font-size: .75rem; font-weight: 700; border-radius: 6px;
+             padding: .1rem .45rem; margin-right: .4rem; background: #eaf2ec; color: var(--hijau); }
+  .tingkat.tinggi { background: #fbeceb; color: var(--merah); }
+  .tingkat.sedang { background: #fdf3e2; color: var(--kuning); }
+  .info { background: #fff; border-left: 4px solid var(--hijau); padding: .8rem 1rem;
+          border-radius: 8px; margin-top: 1rem; font-size: .95rem; }
+  .info.galat { border-color: var(--merah); }
+  .info.kosong { border-color: #b9c7bd; color: #4a5b51; }
+  .laporan { background: #fff; border: 1px solid var(--garis); border-radius: 12px;
+             padding: 1rem 1.2rem; max-height: 32rem; overflow: auto; }
+  .laporan h1 { font-size: 1.15rem; }
+  .laporan h2 { font-size: 1rem; margin: 1.2rem 0 .4rem; }
+  .laporan h3 { font-size: .95rem; }
+  .laporan table { border-collapse: collapse; width: 100%; font-size: .88rem; }
+  .laporan th, .laporan td { border: 1px solid var(--garis); padding: .35rem .5rem; text-align: left; }
+  .laporan code { background: var(--kertas); padding: .05rem .3rem; border-radius: 4px; }
+  .laporan pre { background: var(--kertas); padding: .6rem; border-radius: 8px; overflow: auto; }
+  form.tambah { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .6rem; }
+  input, select { font: inherit; padding: .6rem .7rem; border: 1px solid var(--garis);
+                  border-radius: 10px; min-height: 44px; background: #fff; }
+  input[type=url] { flex: 1 1 18rem; }
+  input.cari-berkas { flex: 1 1 22rem; min-width: 12rem; }
+  details { margin-top: .7rem; }
+  details summary { cursor: pointer; font-size: .9rem; }
+  details ul { margin: .4rem 0 0; padding-left: 1.1rem; max-height: 15rem; overflow: auto; }
+  details li { font-size: .85rem; color: #4a5b51; word-break: break-all; }
+  label { font-size: .9rem; color: #3c4d44; display: block; margin-bottom: .2rem; }
+  .kecil { font-size: .85rem; color: #4a5b51; }
+  .status-baris { margin-top: .9rem; font-weight: 600; min-height: 1.4rem; }
+  .sorot { margin: .6rem 0 0; padding: 0; list-style: none; }
+  .sorot li { padding: .5rem 0; border-top: 1px solid var(--garis); }
+  .sorot li:first-child { border-top: 0; }
+  .sorot .nama { font-weight: 600; }
+  .sorot .ulang { font-size: .8rem; color: var(--kuning); font-weight: 600; margin-left: .4rem; }
+  .baris-pilih { display: flex; flex-wrap: wrap; gap: .4rem; align-items: center; margin-top: .7rem; }
+</style>
+</head>
+<body>
+<header>
+  <div class="bungkus" style="padding-bottom:0">
+    <p class="kembali"><a href="/">&larr; Kembali ke ruang kerja LokaSEO</a></p>
+    <h1>Radar pemantauan situs</h1>
+    <p class="ket">Memantau halaman publik pesaing dan mitra Anda: harga, layanan, data
+      terstruktur, dan rating. Semua berjalan di komputer ini — tidak ada data yang dikirim
+      ke layanan daring. Radar menghormati <code>robots.txt</code> dan memberi jeda antar
+      permintaan.</p>
+    <div id="chip" aria-live="polite"></div>
+  </div>
+</header>
+
+<main class="bungkus">
+  <div id="pesan"></div>
+
+  <div class="baris-tombol">
+    <button id="periksa">Periksa sekarang</button>
+    <button id="muat" class="kedua">Muat ulang daftar</button>
+    <button id="lapor" class="kedua">Lihat laporan terbaru</button>
+    <a class="kedua" href="/hentikan" style="align-self:center;font-size:.9rem">Hentikan aplikasi</a>
+  </div>
+  <p class="status-baris" id="status" role="status"></p>
+
+  <h2>Ringkasan pemantauan</h2>
+  <div id="ringkasan" class="kartu">
+    <div class="info kosong">Memuat ringkasan…</div>
+  </div>
+
+  <h2>Pengaturan usaha</h2>
+  <div id="profil">
+    <div class="info kosong">Memuat pengaturan…</div>
+  </div>
+
+  <h2>Sasaran yang dipantau</h2>
+  <div id="sasaran"></div>
+
+  <div class="kartu">
+    <div class="info">Daftar ini bisa dipindah ke komputer lain atau dikirim ke rekan kerja.
+      Impor <b>menggabung</b> daftar yang ada — tidak pernah menghapus — dan tidak menghubungi
+      situs mana pun; halaman baru diperiksa saat pemeriksaan berikutnya.</div>
+    <div class="baris-tombol">
+      <button type="button" id="unduh-sasaran">Unduh daftar sasaran</button>
+      <button type="button" id="pilih-impor" class="kedua">Impor daftar sasaran</button>
+      <input type="file" id="berkas-sasaran" accept=".json,.txt,application/json,text/plain" hidden>
+    </div>
+    <div id="pesan-sasaran" role="status"></div>
+  </div>
+
+  <h2>Tambah sasaran baru</h2>
+  <div class="kartu">
+    <form class="tambah" id="form-tambah">
+      <div style="flex:1 1 18rem">
+        <label for="url">Alamat halaman pesaing</label>
+        <input type="url" id="url" name="url" placeholder="https://pesaing.example/harga" required>
+      </div>
+      <div>
+        <label for="label">Nama singkat</label>
+        <input type="text" id="label" name="label" placeholder="Pesaing Kopi" maxlength="60">
+      </div>
+      <div>
+        <label for="jenis">Jenis pantauan</label>
+        <select id="jenis" name="jenis">
+          <option value="halaman">Halaman</option>
+          <option value="harga">Harga</option>
+          <option value="layanan">Layanan</option>
+          <option value="reputasi">Reputasi</option>
+        </select>
+      </div>
+      <div style="align-self:flex-end">
+        <button type="submit">Tambah</button>
+      </div>
+    </form>
+    <p class="kecil">Tempel alamat halaman yang boleh dibaca umum. Jangan alamat yang butuh
+      masuk (login) atau halaman rahasia.</p>
+  </div>
+
+  <h2>Peramban untuk halaman ber-JavaScript</h2>
+  <div id="peramban">
+    <div class="info kosong">Memeriksa peramban…</div>
+  </div>
+
+  <h2>Pemeriksaan otomatis</h2>
+  <div id="jadwal">
+    <div class="info kosong">Memuat keadaan jadwal…</div>
+  </div>
+
+  <h2>Perubahan terakhir</h2>
+  <div class="kartu" id="perubahan"></div>
+
+  <h2>Laporan terbaru</h2>
+  <div id="laporan" class="info kosong">Belum dimuat. Klik “Lihat laporan terbaru”.</div>
+
+  <h2>Kesiapan aplikasi di komputer ini</h2>
+  <div id="kesiapan">
+    <div class="kartu">
+      <p>Periksa sekali di komputer Anda: versi, folder data, peramban, penjadwal, dan pemeriksaan
+        terakhir. Hasilnya berupa laporan teks yang bisa Anda salin dan kirimkan bila ada yang tidak
+        beres. Tidak ada data yang dikirim ke mana pun.</p>
+      <div class="baris-tombol">
+        <button type="button" id="periksa-kesiapan">Periksa kesiapan</button>
+      </div>
+    </div>
+  </div>
+
+  <p class="kecil" style="margin-top:2rem">
+    Data radar tersimpan di komputer Anda. Laporan lengkap juga bisa dibuka lewat baris
+    perintah: <code>python -m lokaradar report</code> di folder <code>radar/</code>.
+  </p>
+</main>
+<script>window.__RADAR_DATA__ = {"info": {"tersedia": true, "versi": "0.1.0", "data": "C:\\Users\\Anda\\AppData\\Local\\LokaSEO\\radar", "sasaran": 6, "sasaran_aktif": 6, "potret": 11, "perubahan": 7, "terakhir_jalan": "2026-10-14 16:20", "sasaran_tempat": 1, "peramban": "siap", "kunci_places": true, "luring": false, "profil": {"nama": "Kopi Ranah", "jenis": "kafe-kedai", "jenis_label": "Kafe, kedai kopi, atau tempat makan kecil", "kota": "Bogor", "situs": "kotaranah.example", "sumber": "pengaturan LokaSEO di aplikasi desktop", "ambang_rating": 4.3, "rating_penting": true, "schema": ["CafeOrCoffeeShop", "Restaurant", "LocalBusiness"], "kata_kunci": ["kedai kopi", "menu", "pesan antar"], "catatan": ["Cantumkan jam buka terbaru, menu, dan pilihan pesan antar di halaman."], "ringkas": "Kopi Ranah · jenis: Kafe, kedai kopi, atau tempat makan kecil · kota: Bogor"}, "pekerjaan": {"id": 3, "keadaan": "selesai", "mulai": "2026-10-14T09:20:11Z", "selesai": "2026-10-14T09:20:26Z", "ringkasan": {"diperiksa": 4, "gagal": 0, "dilewati": 0, "perubahan": 2}, "galat": null}}, "sasaran": [{"id": 1, "url": "https://kotaranah.example/", "label": "Situs sendiri", "jenis": "halaman", "aktif": true, "diperiksa_pada": "2026-10-14T09:20:12Z", "sumber": "permintaan-biasa", "catatan": "", "judul": "Kopi Ranah — Kedai Kopi Bogor", "kata": 412, "rating": 4.6, "jumlah_ulasan": 239, "harga_terendah": {"currency": "IDR", "amount": 18000, "name": "Kopi susu"}, "jumlah_perubahan": 2}, {"id": 2, "url": "https://kopiutara.example/menu", "label": "Pesaing Kopi Utara", "jenis": "harga", "aktif": true, "diperiksa_pada": "2026-10-14T09:20:17Z", "sumber": "permintaan-biasa", "catatan": "", "judul": "Menu — Kopi Utara", "kata": 268, "rating": null, "jumlah_ulasan": null, "harga_terendah": {"currency": "IDR", "amount": 17000, "name": "Es kopi susu"}, "jumlah_perubahan": 3}, {"id": 3, "url": "https://roasteryselatan.example/harga", "label": "Pesaing Roastery Selatan", "jenis": "harga", "aktif": true, "diperiksa_pada": "2026-10-14T09:20:21Z", "sumber": "peramban", "catatan": "", "judul": "Daftar harga — Roastery Selatan", "kata": 537, "rating": null, "jumlah_ulasan": null, "harga_terendah": {"currency": "IDR", "amount": 25000, "name": "Kopi tubruk"}, "jumlah_perubahan": 1}, {"id": 6, "url": "https://kateringtimur.example/harga", "label": "Katering Timur", "jenis": "harga", "aktif": true, "diperiksa_pada": null, "sumber": "", "catatan": "", "judul": "", "kata": 0, "rating": null, "jumlah_ulasan": null, "harga_terendah": null, "jumlah_perubahan": 0}, {"id": 5, "url": "https://kafebarat.example/menu", "label": "Pesaing Kafe Barat", "jenis": "harga", "aktif": true, "diperiksa_pada": "2026-10-14T09:20:27Z", "sumber": "permintaan-biasa", "catatan": "", "judul": "Menu dan harga — Kafe Barat", "kata": 301, "rating": null, "jumlah_ulasan": null, "harga_terendah": {"currency": "IDR", "amount": 21000, "name": "Americano"}, "jumlah_perubahan": 0}, {"id": 4, "url": "tempat:ChIJcontohplaceidBogor", "label": "Rating Google Kopi Ranah", "jenis": "reputasi", "aktif": true, "diperiksa_pada": "2026-10-14T09:20:24Z", "sumber": "places-api", "catatan": "", "judul": "Kopi Ranah", "kata": 0, "rating": 4.6, "jumlah_ulasan": 239, "harga_terendah": null, "jumlah_perubahan": 1}], "perubahan": [{"id": 7, "target_id": 1, "pada": "2026-10-14T09:20:12Z", "jenis": "harga", "tingkat": "sedang", "pesan": "Harga terendah naik dari IDR 16.000 menjadi IDR 18.000."}, {"id": 6, "target_id": 4, "pada": "2026-10-14T09:20:24Z", "jenis": "rating", "tingkat": "tinggi", "pesan": "Rating turun dari 4,5 menjadi 4,4 pada skala 5; jumlah ulasan 214 menjadi 239."}, {"id": 5, "target_id": 3, "pada": "2026-10-14T09:20:21Z", "jenis": "cara-pengambilan", "tingkat": "info", "pesan": "Cara pengambilan berubah dari permintaan biasa menjadi peramban."}, {"id": 4, "target_id": 2, "pada": "2026-10-14T09:20:17Z", "jenis": "layanan", "tingkat": "sedang", "pesan": "Muncul layanan baru: “Pesan antar sendiri, tanpa biaya”."}, {"id": 3, "target_id": 2, "pada": "2026-10-13T09:05:00Z", "jenis": "isi", "tingkat": "info", "pesan": "Isi halaman bertambah 118 kata (dari 150 menjadi 268)."}, {"id": 2, "target_id": 4, "pada": "2026-10-12T09:04:00Z", "jenis": "reputasi", "tingkat": "info", "pesan": "Pemantauan pertama: potret awal disimpan sebagai dasar pembanding."}], "jadwal": {"nama_tugas": "LokaSEO - Radar harian", "perintah": "\"C:\\Program Files\\LokaSEO\\LokaSEO.exe\" --radar-periksa", "cron": "0 7 * * * LokaSEO.exe --radar-periksa", "dukungan": {"bisa": true, "platform": "win32", "nama_tugas": "LokaSEO - Radar harian", "pesan": "Windows Task Scheduler siap dipakai."}, "terpasang": true, "aktif": true, "waktu": "07:00", "frekuensi": "harian", "hari": "", "berikutnya": "2026-10-15 07:00"}, "peramban": {"tersedia": true, "jalur": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe", "nama": "Microsoft Edge", "versi": "Microsoft Edge 141.0.3537.57", "sumber": "terpasang di sistem", "pesan": "Peramban siap dipakai untuk merender halaman ber-JavaScript.", "mode_render": "auto", "instalator": false}, "ringkasan": {"hari": 7, "sejak": "2026-10-07T09:20:00Z", "sasaran": 6, "diperiksa": 11, "perubahan": 20, "per_tingkat": {"tinggi": 1, "sedang": 2, "rendah": 0, "info": 17}, "penting": [{"target_id": 4, "sasaran": "Rating Google Kopi Ranah", "url": "tempat:ChIJcontohplaceidBogor", "jenis": "rating", "tingkat": "tinggi", "pesan": "Rating turun dari 4,5 menjadi 4,4 pada skala 5; jumlah ulasan 214 menjadi 239.", "jumlah": 1, "pertama": "2026-10-14T09:20:24Z", "terakhir": "2026-10-14T09:20:24Z"}, {"target_id": 1, "sasaran": "Situs sendiri", "url": "https://kotaranah.example/", "jenis": "harga", "tingkat": "sedang", "pesan": "Harga terendah naik dari IDR 16.000 menjadi IDR 18.000.", "jumlah": 2, "pertama": "2026-10-11T09:04:00Z", "terakhir": "2026-10-14T09:20:12Z"}, {"target_id": 2, "sasaran": "Pesaing Kopi Utara", "url": "https://kopiutara.example/menu", "jenis": "layanan", "tingkat": "sedang", "pesan": "Muncul layanan baru: “Pesan antar sendiri, tanpa biaya”.", "jumlah": 1, "pertama": "2026-10-14T09:20:17Z", "terakhir": "2026-10-14T09:20:17Z"}], "berulang": [{"target_id": 2, "sasaran": "Pesaing Kopi Utara", "url": "https://kopiutara.example/menu", "jenis": "isi", "tingkat": "info", "pesan": "Isi halaman berubah, tetapi tidak ada harga atau layanan yang berubah.", "jumlah": 14, "pertama": "2026-10-08T09:02:00Z", "terakhir": "2026-10-14T09:20:17Z"}], "diam": [{"sasaran": "Pesaing Kafe Barat", "url": "https://kafebarat.example/menu"}], "belum_diperiksa": [{"sasaran": "Katering Timur", "url": "https://kateringtimur.example/harga"}], "terakhir_diperiksa": "2026-10-14T09:20:27Z", "ambang_berulang": 3}};</script>
+<script>
+"use strict";
+
+const TINGKAT = { info: "Info", rendah: "Rendah", sedang: "Sedang", tinggi: "Tinggi" };
+
+function el(id) { return document.getElementById(id); }
+
+function teks(tag, isi, kelas) {
+  const node = document.createElement(tag);
+  if (isi !== undefined && isi !== null) node.textContent = String(isi);
+  if (kelas) node.className = kelas;
+  return node;
+}
+
+function pesan(kind, isi) {
+  const kotak = el("pesan");
+  kotak.replaceChildren();
+  if (!isi) return;
+  const div = teks("div", isi, "info" + (kind === "galat" ? " galat" : ""));
+  kotak.append(div);
+}
+
+async function ambil(jalur, opsi) {
+  const balasan = await fetch(jalur, opsi);
+  const tipe = balasan.headers.get("content-type") || "";
+  const data = tipe.includes("json") ? await balasan.json() : { markdown: await balasan.text() };
+  if (!balasan.ok) throw new Error(data.error || "Permintaan gagal (" + balasan.status + ").");
+  return data;
+}
+
+// -- markdown ringan: escape dulu, baru diformat (tidak ada HTML dari luar) --
+function aman(teks) {
+  return String(teks).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+function markdown(isi) {
+  const baris = aman(isi).split("\n");
+  const keluaran = [];
+  let dalamTabel = false;
+  let dalamDaftar = false;
+  const garis = (barisKe) => barisKe.trim().replace(/^\|/, "").replace(/\|$/, "")
+    .split("|").map((sel) => sel.trim());
+  for (let i = 0; i < baris.length; i += 1) {
+    const isiBaris = baris[i];
+    const berikut = baris[i + 1] || "";
+    if (/^\|.*\|$/.test(isiBaris.trim())) {
+      if (!dalamTabel) { keluaran.push("<table>"); dalamTabel = true; }
+      const sel = garis(isiBaris);
+      if (/^\|[\s:|-]+\|$/.test(berikut.trim())) {
+        keluaran.push("<tr>" + sel.map((s) => "<th>" + s + "</th>").join("") + "</tr>");
+        i += 1;
+      } else {
+        keluaran.push("<tr>" + sel.map((s) => "<td>" + s + "</td>").join("") + "</tr>");
+      }
+      continue;
+    }
+    if (dalamTabel) { keluaran.push("</table>"); dalamTabel = false; }
+    if (/^[-*] /.test(isiBaris)) {
+      if (!dalamDaftar) { keluaran.push("<ul>"); dalamDaftar = true; }
+      keluaran.push("<li>" + isiBaris.slice(2).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>")
+        .replace(/`(.+?)`/g, "<code>$1</code>") + "</li>");
+      continue;
+    }
+    if (dalamDaftar) { keluaran.push("</ul>"); dalamDaftar = false; }
+    if (!isiBaris.trim()) { continue; }
+    const kepala = isiBaris.match(/^(#{1,4})\s+(.*)$/);
+    if (kepala) {
+      const tingkat = Math.min(kepala[1].length + 1, 4);
+      keluaran.push("<h" + tingkat + ">" + kepala[2] + "</h" + tingkat + ">");
+      continue;
+    }
+    if (/^&gt; /.test(isiBaris)) { keluaran.push("<blockquote>" + isiBaris.slice(5) + "</blockquote>"); continue; }
+    if (/^---+$/.test(isiBaris.trim())) { keluaran.push("<hr>"); continue; }
+    keluaran.push("<p>" + isiBaris.replace(/\*\*(.+?)\*\*/g, "<b>$1</b>")
+      .replace(/`(.+?)`/g, "<code>$1</code>") + "</p>");
+  }
+  if (dalamTabel) keluaran.push("</table>");
+  if (dalamDaftar) keluaran.push("</ul>");
+  return keluaran.join("\n");
+}
+
+// -- tampilan ---------------------------------------------------------------
+function gambarChip(status) {
+  const chip = el("chip");
+  chip.replaceChildren();
+  if (!status || status.tersedia === false) return;
+  const tambah = (label, nilai) => {
+    const b = teks("span", undefined, "chip");
+    b.append(teks("span", label + ": "));
+    b.append(teks("b", nilai));
+    chip.append(b);
+  };
+  tambah("Sasaran", status.sasaran + " (" + status.sasaran_aktif + " aktif)");
+  tambah("Perubahan tercatat", status.perubahan);
+  tambah("Terakhir diperiksa", status.terakhir_jalan || "belum pernah");
+  tambah("Rendering", status.peramban === "siap" ? "peramban siap" : "permintaan biasa");
+}
+
+function waktu(nilai) {
+  // Waktu di berkas disimpan dalam bentuk ISO; tampilkan dalam waktu setempat.
+  if (!nilai) return "belum pernah";
+  const kapan = new Date(nilai);
+  if (isNaN(kapan.getTime())) return String(nilai);
+  return kapan.toLocaleString("id-ID", {
+    day: "numeric", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit",
+  });
+}
+
+function gambarSasaran(daftar) {
+  const kotak = el("sasaran");
+  sasaranTerkini = daftar.slice();
+  kotak.replaceChildren();
+  if (!daftar.length) {
+    kotak.append(teks("div", "Belum ada sasaran. Tambahkan halaman pesaing di bawah.", "info kosong"));
+    return;
+  }
+  daftar.forEach((sasaran) => {
+    const kartu = teks("div", undefined, "kartu");
+    const baris = teks("div", undefined, "sasaran");
+    const kiri = teks("div");
+    kiri.append(teks("h3", sasaran.label));
+    kiri.append(teks("div", sasaran.url, "url"));
+    const angka = [];
+    if (sasaran.harga_terendah) {
+      angka.push("Harga terbaca: " + sasaran.harga_terendah.currency + " " +
+        Number(sasaran.harga_terendah.amount).toLocaleString("id-ID") +
+        (sasaran.harga_terendah.name ? " (" + sasaran.harga_terendah.name + ")" : ""));
+    }
+    if (sasaran.rating) angka.push("Rating: " + sasaran.rating + " dari " + sasaran.jumlah_ulasan + " ulasan");
+    if (sasaran.kata) angka.push("Kata: " + sasaran.kata);
+    angka.push("Diperiksa: " + waktu(sasaran.diperiksa_pada));
+    if (sasaran.sumber === "peramban") angka.push("diambil dengan peramban");
+    angka.forEach((teksAngka) => kiri.append(teks("div", teksAngka, "angka")));
+    if (sasaran.catatan) kiri.append(teks("div", sasaran.catatan, "kecil"));
+    const tombol = teks("button", "Hapus", "kedua");
+    tombol.addEventListener("click", () => hapusSasaran(sasaran));
+    baris.append(kiri, tombol);
+    kartu.append(baris);
+    kotak.append(kartu);
+  });
+}
+
+// Tingkat diurutkan dari yang paling perlu dilihat; di dalam tingkat yang sama,
+// yang terbaru lebih dulu.
+const PANGKAT_TINGKAT = { tinggi: 0, sedang: 1, rendah: 2, info: 3 };
+
+function urutkanPerubahan(daftar) {
+  return daftar.slice().sort((a, b) => {
+    const beda = (PANGKAT_TINGKAT[a.tingkat] ?? 9) - (PANGKAT_TINGKAT[b.tingkat] ?? 9);
+    if (beda !== 0) return beda;
+    return String(b.pada || "").localeCompare(String(a.pada || ""));
+  });
+}
+
+// Hanya "tinggi" dan "sedang" yang punya warna lencana sendiri; sisanya netral.
+function kelasTingkat(tingkat) {
+  return tingkat === "tinggi" || tingkat === "sedang" ? "tingkat " + tingkat : "tingkat";
+}
+
+// Satu baris perubahan: lencana tingkat, nama sasaran, pesan, lalu waktunya.
+// `jumlah` hanya diisi ringkasan, yang menggabungkan pola yang sama jadi satu
+// baris berhitungan; daftar perubahan memakainya tanpa hitungan.
+function butirPerubahan(item, jumlah = 0) {
+  const li = teks("li");
+  li.append(teks("span", TINGKAT[item.tingkat] || item.tingkat, kelasTingkat(item.tingkat)));
+  if (item.sasaran) li.append(teks("span", item.sasaran + ": ", "nama"));
+  li.append(teks("span", item.pesan));
+  // Lencana hitungan harus menempel pada pesannya: bila ditambahkan sesudah
+  // baris tanggal, ia jatuh ke baris sendiri di kiri dan tampak terputus.
+  if (jumlah > 1) li.append(teks("span", jumlah + "x", "ulang"));
+  li.append(teks("div", waktu(item.pada), "kecil"));
+  return li;
+}
+
+function gambarPerubahan(daftar) {
+  const kotak = el("perubahan");
+  kotak.replaceChildren();
+  if (!daftar.length) {
+    kotak.append(teks("p", "Belum ada perubahan tercatat. Jalankan pemeriksaan dua kali " +
+      "untuk melihat perbandingan.", "kecil"));
+    return;
+  }
+  const ul = teks("ul", undefined, "daftar");
+  urutkanPerubahan(daftar).forEach((item) => ul.append(butirPerubahan(item)));
+  kotak.append(ul);
+}
+
+
+// -- ringkasan: yang penting di atas, pola bising dinyatakan ---------------
+const LABEL_TINGKAT_RINGKAS = { tinggi: "Penting", sedang: "Perlu dilihat", rendah: "Catatan", info: "Informasi" };
+const HARI_RINGKASAN = [7, 30];
+
+// Satu baris per pola, lengkap dengan hitungannya. Ringkasan menamai stempel
+// waktunya `terakhir` sedangkan `butirPerubahan` membaca `pada`, jadi namanya
+// diseragamkan di sini.
+function daftarSorot(daftar) {
+  const ul = teks("ul", undefined, "sorot");
+  daftar.forEach((item) => ul.append(butirPerubahan({
+    tingkat: item.tingkat,
+    sasaran: item.sasaran,
+    pesan: item.pesan,
+    pada: item.terakhir,
+  }, item.jumlah)));
+  return ul;
+}
+
+function gambarRingkasan(data) {
+  const kotak = el("ringkasan");
+  kotak.replaceChildren();
+  if (!data) {
+    kotak.append(teks("div", "Ringkasan belum bisa dimuat.", "info kosong"));
+    return;
+  }
+
+  if (!data.sasaran) {
+    kotak.append(teks("p", "Belum ada sasaran yang dipantau. Tambahkan satu alamat halaman " +
+      "lalu jalankan pemeriksaan dua kali — radar hanya bisa membandingkan setelah itu."));
+    return;
+  }
+  const bagian = [];
+  if (data.diperiksa) bagian.push(data.diperiksa + " kali pemeriksaan");
+  bagian.push(data.sasaran + " sasaran");
+  bagian.push(data.perubahan + " perubahan");
+  const kepala = teks("p");
+  kepala.append(teks("b", bagian.join(" · ")));
+  kotak.append(kepala);
+
+  const rincian = Object.entries(data.per_tingkat || {})
+    .filter(([, nilai]) => nilai > 0)
+    .map(([tingkat, nilai]) => (LABEL_TINGKAT_RINGKAS[tingkat] || tingkat) + " " + nilai)
+    .join(" · ");
+  if (rincian) kotak.append(teks("p", rincian, "kecil"));
+  if (data.terakhir_diperiksa) kotak.append(teks("p", "Pemeriksaan terakhir: " + waktu(data.terakhir_diperiksa), "kecil"));
+
+  const pilihan = teks("div", undefined, "baris-pilih");
+  pilihan.append(teks("span", "Periode: ", "kecil"));
+  HARI_RINGKASAN.forEach((hari) => {
+    const aktif = hari === data.hari;
+    const tombol = teks("button", hari + " hari", aktif ? "" : "kedua");
+    tombol.type = "button";
+    tombol.disabled = aktif;
+    tombol.addEventListener("click", async () => {
+      try {
+        gambarRingkasan(await ambil("/api/radar/ringkasan?hari=" + hari));
+      } catch (error) {
+        pesan("galat", error.message);
+      }
+    });
+    pilihan.append(tombol);
+  });
+  kotak.append(pilihan);
+
+  if (data.penting && data.penting.length) {
+    kotak.append(teks("h3", "Yang perlu dilihat"));
+    kotak.append(daftarSorot(data.penting));
+  } else if (data.perubahan) {
+    kotak.append(teks("h3", "Yang perlu dilihat"));
+    kotak.append(teks("p", "Tidak ada perubahan bertingkat tinggi atau sedang. " +
+      "Rinciannya ada di bagian “Perubahan terakhir”.", "kecil"));
+  } else {
+    kotak.append(teks("p", "Belum ada perubahan. Radar baru bisa membandingkan setelah " +
+      "satu sasaran diperiksa dua kali.", "kecil"));
+  }
+
+  if (data.berulang && data.berulang.length) {
+    kotak.append(teks("h3", "Pola berulang (kemungkinan bising)"));
+    kotak.append(daftarSorot(data.berulang));
+    kotak.append(teks("p", "Pola yang muncul terus pada sasaran yang sama biasanya berarti " +
+      "situsnya memang mengubah teks kecilnya sendiri setiap kali diminta — bukan perubahan " +
+      "yang perlu ditanggapi.", "kecil"));
+  }
+
+  // Sebut nama-namanya dalam satu baris; judulnya tidak ditulis bila kosong.
+  const sebutSasaran = (judul, daftar, keterangan = "") => {
+    if (!daftar || !daftar.length) return;
+    kotak.append(teks("h3", judul));
+    kotak.append(teks("p", daftar.map((item) => item.sasaran).join(", "), "kecil"));
+    if (keterangan) kotak.append(teks("p", keterangan, "kecil"));
+  };
+
+  // "Tidak berubah" adalah klaim: radar sudah melihat isinya dan tidak menemukan
+  // beda. Sasaran yang belum pernah diambil tidak punya dasar untuk klaim itu,
+  // jadi disebut sendiri supaya tidak terbaca sebagai "aman".
+  sebutSasaran("Tidak berubah", data.diam);
+  sebutSasaran("Belum diperiksa", data.belum_diperiksa,
+    "Sasaran ini belum pernah diambil dalam periode ini, jadi belum ada yang bisa " +
+    "dibandingkan. Jalankan pemeriksaan dua kali supaya radar punya dua potret.");
+}
+
+
+// -- pengaturan usaha: kunci utama kerja radar ------------------------------
+const KUNCI_LOKASEO = "lokaseo.workspace.v1";
+
+function bacaPenyimpananLokaSEO() {
+  try {
+    const mentah = localStorage.getItem(KUNCI_LOKASEO);
+    if (!mentah) return null;
+    const data = JSON.parse(mentah);
+    return data && Array.isArray(data.projects) && data.projects.length ? data : null;
+  } catch (error) {
+    return null;
+  }
+}
+
+function proyekAktif(data) {
+  if (!data) return null;
+  return data.projects.find((item) => item.id === data.activeId) || data.projects[0] || null;
+}
+
+function bacaJenisUsaha() {
+  const pilihan = el("jenis-usaha");
+  return pilihan ? pilihan.value : "";
+}
+
+async function isiPilihanJenis(terpilih) {
+  const pilihan = el("jenis-usaha");
+  if (!pilihan || pilihan.options.length > 1) {
+    if (pilihan && terpilih) pilihan.value = terpilih;
+    return;
+  }
+  try {
+    const daftar = await ambil("/api/radar/jenis");
+    daftar.forEach((jenis) => {
+      const opsi = document.createElement("option");
+      opsi.value = jenis.id;
+      opsi.textContent = jenis.label + " (ambang rating " + jenis.min_rating + ")";
+      pilihan.append(opsi);
+    });
+    if (terpilih) pilihan.value = terpilih;
+  } catch (error) {
+    /* daftar jenis tidak wajib: isian manual tetap bisa dikirim */
+  }
+}
+
+function baris(label, nilai) {
+  const p = document.createElement("p");
+  p.append(teks("b", label + ": "));
+  p.append(teks("span", nilai));
+  return p;
+}
+
+function gambarProfil(profil) {
+  const kotak = el("profil");
+  kotak.replaceChildren();
+  const kartu = teks("div", undefined, "kartu");
+  const dataLokaSEO = bacaPenyimpananLokaSEO();
+  const proyek = proyekAktif(dataLokaSEO);
+
+  if (!profil || (!profil.jenis && !profil.nama)) {
+    const info = teks("div", "Radar belum tahu jenis usaha Anda. Jenis usaha menentukan ambang " +
+      "rating, data terstruktur yang diharapkan, dan gagasan kata kunci.", "info");
+    kartu.append(info);
+    if (proyek) {
+      const tombolAmbil = teks("button", "Ambil pengaturan dari proyek LokaSEO");
+      tombolAmbil.id = "ambil-lokaseo";
+      tombolAmbil.addEventListener("click", () => sinkronkan(true));
+      kartu.append(tombolAmbil);
+    } else {
+      kartu.append(teks("p", "Proyek LokaSEO belum terbuka di peramban ini. Isi jenis usaha di " +
+        "LokaSEO (proyek aktif), atau pilih manual di bawah.", "kecil"));
+    }
+  } else {
+    kartu.append(teks("h3", profil.nama || "(nama usaha belum diisi)"));
+    if (profil.jenis_label) kartu.append(baris("Jenis usaha", profil.jenis_label));
+    else kartu.append(baris("Jenis usaha", "belum dipilih"));
+    if (profil.kota) kartu.append(baris("Kota", profil.kota));
+    if (profil.situs) kartu.append(baris("Situs sendiri", profil.situs));
+    kartu.append(baris("Ambang rating", profil.ambang_rating));
+    if (profil.schema && profil.schema.length) {
+      kartu.append(baris("Data terstruktur diharapkan", profil.schema.join(", ")));
+    }
+    if (profil.kata_kunci && profil.kata_kunci.length) {
+      kartu.append(baris("Kata kunci awal", profil.kata_kunci.join(", ")));
+    }
+    if (profil.sumber) kartu.append(teks("p", "Sumber: " + profil.sumber, "kecil"));
+    const tombol = teks("button", "Ambil ulang pengaturan dari LokaSEO");
+    tombol.id = "ambil-lokaseo";
+    tombol.addEventListener("click", () => sinkronkan(true));
+    kartu.append(tombol);
+    if (!profil.jenis) {
+      kartu.append(teks("p", "Tip: pilih jenis usaha di proyek LokaSEO supaya radar memakai " +
+        "pengaturan yang sama sejak awal.", "kecil"));
+    }
+  }
+
+  const rincian = teks("details");
+  rincian.append(teks("summary", "Atur manual (bila perlu)"));
+  const form = teks("form", undefined, "tambah");
+  const bungkusJenis = teks("div");
+  bungkusJenis.append(teks("label", "Jenis usaha"));
+  const pilihan = document.createElement("select");
+  pilihan.id = "jenis-usaha";
+  const kosong = teks("option", "— pilih —");
+  kosong.value = "";
+  pilihan.append(kosong);
+  bungkusJenis.append(pilihan);
+  const bungkusNama = teks("div");
+  bungkusNama.append(teks("label", "Nama usaha"));
+  const nama = teks("input");
+  nama.id = "nama-usaha";
+  nama.type = "text";
+  nama.maxLength = 80;
+  bungkusNama.append(nama);
+  const bungkusKota = teks("div");
+  bungkusKota.append(teks("label", "Kota"));
+  const kota = teks("input");
+  kota.id = "kota-usaha";
+  kota.type = "text";
+  kota.maxLength = 80;
+  bungkusKota.append(kota);
+  const bungkusSitus = teks("div");
+  bungkusSitus.append(teks("label", "Domain situs sendiri"));
+  const situs = teks("input");
+  situs.id = "situs-usaha";
+  situs.type = "text";
+  situs.maxLength = 250;
+  bungkusSitus.append(situs);
+  const kirim = teks("button", "Simpan");
+  kirim.type = "submit";
+  const bungkusKirim = teks("div");
+  bungkusKirim.append(kirim);
+  form.append(bungkusJenis, bungkusNama, bungkusKota, bungkusSitus, bungkusKirim);
+  form.addEventListener("submit", async (kejadian) => {
+    kejadian.preventDefault();
+    try {
+      const hasil = await ambil("/api/radar/profil", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          jenis: bacaJenisUsaha(),
+          nama: nama.value.trim(),
+          kota: kota.value.trim(),
+          situs: situs.value.trim(),
+          sumber: "diatur manual dari halaman radar",
+        }),
+      });
+      gambarProfil(hasil);
+      pesan("", "Pengaturan usaha disimpan. Radar akan memakai ambang dan pemeriksaan ini.");
+    } catch (error) {
+      pesan("galat", error.message);
+    }
+  });
+  rincian.append(form);
+  kartu.append(rincian);
+  kotak.append(kartu);
+
+  isiPilihanJenis(profil && profil.jenis ? profil.jenis : "");
+  if (profil && profil.nama) nama.value = profil.nama;
+  if (profil && profil.kota) kota.value = profil.kota;
+  if (profil && profil.situs) situs.value = profil.situs;
+}
+
+async function sinkronkan(manual) {
+  const data = bacaPenyimpananLokaSEO();
+  const proyek = proyekAktif(data);
+  if (!data || !proyek) {
+    if (manual) {
+      pesan("galat", "Pengaturan LokaSEO tidak ditemukan di peramban ini. Buka ruang kerja LokaSEO " +
+        "lebih dulu, atau atur manual di bagian bawah kartu pengaturan.");
+    }
+    return;
+  }
+  try {
+    const hasil = await ambil("/api/radar/profil", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+    gambarProfil(hasil);
+    const jenis = hasil.jenis_label || "jenis usaha belum dipilih";
+    pesan("", "Pengaturan diambil dari proyek LokaSEO “" + proyek.name + "” — " + jenis +
+      ". Radar memakai pengaturan ini sebagai kunci utama.");
+  } catch (error) {
+    if (manual) pesan("galat", error.message);
+  }
+}
+
+
+// -- pemeriksaan otomatis (penjadwal Windows) -------------------------------
+function gambarJadwal(data) {
+  const kotak = el("jadwal");
+  kotak.replaceChildren();
+  const contoh = Boolean(window.__RADAR_DATA__);
+  const kartu = teks("div", undefined, "kartu");
+  if (!data) {
+    kartu.append(teks("div", "Keadaan jadwal otomatis belum bisa dibaca.", "info kosong"));
+    kotak.append(kartu);
+    return;
+  }
+  const bisa = Boolean(data.dukungan && data.dukungan.bisa);
+  const status = teks("p");
+  if (!bisa) {
+    status.append(teks("span", (data.dukungan && data.dukungan.pesan) ||
+      "Jadwal otomatis tidak tersedia di komputer ini."));
+    kartu.append(status);
+    const kodeCron = teks("code", data.cron || "");
+    const ketCron = teks("p", undefined, "kecil");
+    ketCron.append(teks("span", "Perintah untuk cron: "), kodeCron);
+    kartu.append(ketCron);
+    kotak.append(kartu);
+    return;
+  }
+
+  if (data.terpasang && data.aktif) {
+    const pola = data.frekuensi === "mingguan"
+      ? "setiap " + (data.hari || "?") + " pukul " + data.waktu
+      : "setiap hari pukul " + data.waktu;
+    status.append(teks("b", "Aktif: "));
+    status.append(teks("span", "radar memeriksa sendiri " + pola +
+      (data.berikutnya ? ", berikutnya sekitar " + data.berikutnya : "") + "."));
+  } else if (data.terpasang) {
+    status.append(teks("b", "Nonaktif: "));
+    status.append(teks("span", "tugasnya ada di penjadwal Windows tetapi sedang dimatikan."));
+  } else {
+    status.append(teks("b", "Belum aktif: "));
+    status.append(teks("span", "pemeriksaan hanya berjalan bila Anda menekan “Periksa sekarang”."));
+  }
+  kartu.append(status);
+
+  const form = teks("form", undefined, "tambah");
+  const bungkusWaktu = teks("div");
+  bungkusWaktu.append(teks("label", "Jam pemeriksaan"));
+  const waktu = teks("input");
+  waktu.type = "time";
+  waktu.id = "jadwal-waktu";
+  waktu.value = data.waktu || "07:00";
+  bungkusWaktu.append(waktu);
+
+  const bungkusFrekuensi = teks("div");
+  bungkusFrekuensi.append(teks("label", "Ulangan"));
+  const frekuensi = document.createElement("select");
+  frekuensi.id = "jadwal-frekuensi";
+  const harian = teks("option", "Setiap hari");
+  harian.value = "harian";
+  const mingguan = teks("option", "Setiap minggu");
+  mingguan.value = "mingguan";
+  frekuensi.append(harian, mingguan);
+  frekuensi.value = data.frekuensi === "mingguan" ? "mingguan" : "harian";
+  bungkusFrekuensi.append(frekuensi);
+
+  const bungkusHari = teks("div");
+  bungkusHari.append(teks("label", "Hari"));
+  const hari = document.createElement("select");
+  hari.id = "jadwal-hari";
+  ["senin", "selasa", "rabu", "kamis", "jumat", "sabtu", "minggu"].forEach((nama) => {
+    const opsi = teks("option", nama.charAt(0).toUpperCase() + nama.slice(1));
+    opsi.value = nama;
+    hari.append(opsi);
+  });
+  if (data.hari) hari.value = data.hari;
+  bungkusHari.append(hari);
+  bungkusHari.hidden = frekuensi.value !== "mingguan";
+  frekuensi.addEventListener("change", () => {
+    bungkusHari.hidden = frekuensi.value !== "mingguan";
+  });
+
+  const simpan = teks("button", data.terpasang ? "Perbarui jadwal" : "Aktifkan jadwal");
+  simpan.type = "submit";
+  if (contoh) simpan.disabled = true;
+  const bungkusKirim = teks("div");
+  bungkusKirim.append(simpan);
+  form.append(bungkusWaktu, bungkusFrekuensi, bungkusHari, bungkusKirim);
+  form.addEventListener("submit", (kejadian) => {
+    kejadian.preventDefault();
+    kirimJadwal(
+      {
+        aksi: "aktifkan",
+        waktu: el("jadwal-waktu").value,
+        frekuensi: el("jadwal-frekuensi").value,
+        hari: el("jadwal-hari").value,
+      },
+      "Jadwal otomatis disimpan.",
+    );
+  });
+  kartu.append(form);
+
+  if (data.terpasang) {
+    const barisTombol = teks("div", undefined, "baris-tombol");
+    const jalankan = teks("button", "Jalankan tugasnya sekarang", "kedua");
+    jalankan.type = "button";
+    jalankan.addEventListener("click", () =>
+      kirimJadwal(
+        { aksi: "jalankan" },
+        "Tugas dijalankan lewat penjadwal Windows. Hasilnya muncul beberapa saat lagi.",
+      ),
+    );
+    const matikan = teks("button", "Matikan jadwal", "kedua");
+    matikan.type = "button";
+    matikan.addEventListener("click", () =>
+      kirimJadwal({ aksi: "matikan" }, "Jadwal otomatis dimatikan."),
+    );
+    if (contoh) {
+      jalankan.disabled = true;
+      matikan.disabled = true;
+    }
+    barisTombol.append(jalankan, matikan);
+    kartu.append(barisTombol);
+  }
+
+  const ketPerintah = teks("p", undefined, "kecil");
+  ketPerintah.append(teks("span", "Perintah yang didaftarkan: "));
+  ketPerintah.append(teks("code", data.perintah || "(belum terbaca)"));
+  kartu.append(ketPerintah);
+  kartu.append(teks("p", "Radar tidak memeriksa lebih sering dari sekali sehari supaya tidak " +
+    "membebani situs orang. Komputer harus menyala pada jam itu; bila sedang mati atau tidur, " +
+    "pemeriksaan tersebut terlewat.", "kecil"));
+  kotak.append(kartu);
+}
+
+async function kirimJadwal(isi, sukses) {
+  try {
+    const hasil = await ambil("/api/radar/jadwal", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(isi),
+    });
+    gambarJadwal(hasil);
+    pesan("", sukses);
+  } catch (error) {
+    pesan("galat", error.message);
+  }
+}
+
+
+// -- peramban: halaman ber-JavaScript --------------------------------------
+function gambarPeramban(data) {
+  const kotak = el("peramban");
+  kotak.replaceChildren();
+  const contoh = Boolean(window.__RADAR_DATA__);
+  const kartu = teks("div", undefined, "kartu");
+  if (!data) {
+    kartu.append(teks("div", "Keadaan peramban belum bisa dibaca.", "info kosong"));
+    kotak.append(kartu);
+    return;
+  }
+
+  const status = teks("p");
+  if (data.tersedia) {
+    status.append(teks("b", "Siap: "));
+    const nama = data.nama || "peramban";
+    status.append(teks("span", nama + (data.versi ? " (" + data.versi + ")" : "") +
+      " dipakai untuk membuka halaman yang isinya disusun JavaScript. Tidak ada yang " +
+      "perlu diunduh: peramban ini sudah ada di komputer Anda." +
+      (data.sumber === "pilihan Anda" ? " Berkasnya Anda tunjuk sendiri." : "")));
+  } else {
+    status.append(teks("b", "Belum ada peramban: "));
+    status.append(teks("span", data.alasan || data.pesan || "Peramban tidak ditemukan."));
+  }
+  kartu.append(status);
+
+  const baris = teks("div", undefined, "baris-tombol");
+  const uji = teks("button", "Uji rendering");
+  uji.type = "button";
+  uji.disabled = contoh || !data.tersedia;
+  if (!data.tersedia) uji.title = "Tombol ini hidup setelah peramban ditemukan.";
+  uji.addEventListener("click", async () => {
+    uji.disabled = true;
+    uji.textContent = "Menguji…";
+    try {
+      const hasil = await ambil("/api/radar/peramban", { method: "POST", headers: { "Content-Type": "application/json" }, body: "{}" });
+      pesan(hasil.berhasil ? "" : "galat", hasil.pesan);
+      segarkanPeramban(data);
+    } catch (error) {
+      pesan("galat", error.message);
+      uji.disabled = !data.tersedia;
+      uji.textContent = "Uji rendering";
+    }
+  });
+
+  const ulang = teks("button", "Periksa ulang", "kedua");
+  ulang.type = "button";
+  ulang.disabled = contoh;
+  ulang.title = "Cari ulang peramban yang terpasang di komputer ini.";
+  ulang.addEventListener("click", async () => {
+    ulang.disabled = true;
+    ulang.textContent = "Mencari…";
+    try {
+      const segar = await ambil("/api/radar/peramban?ulang=1");
+      pesan("", "Pencarian peramban diulang.");
+      gambarPeramban(segar);
+    } catch (error) {
+      pesan("galat", error.message);
+      ulang.disabled = Boolean(contoh);
+      ulang.textContent = "Periksa ulang";
+    }
+  });
+  baris.append(uji, ulang);
+  kartu.append(baris);
+
+  // Bila tidak ada peramban, tombol uji tidak boleh sekadar mati: jelaskan
+  // kenapa, dan beri jalan keluar yang bisa dikerjakan sendiri.
+  if (!data.tersedia && !contoh) {
+    kartu.append(teks("p", "Tombol “Uji rendering” hidup setelah peramban ditemukan. " +
+      "Ada dua jalan: pasang Microsoft Edge atau Google Chrome lalu klik " +
+      "“Periksa ulang”, atau tunjuk sendiri berkasnya di bawah ini.", "kecil"));
+    kartu.append(teks("p", "Jalurnya paling mudah disalin dari perambannya sendiri: buka " +
+      "Edge atau Chrome, ketik edge://version (atau chrome://version) di bilah alamat, " +
+      "lalu salin baris “Executable Path”. Radar tidak pernah menjalankan peramban " +
+      "hanya untuk memeriksanya — pemeriksaan yang sesungguhnya terjadi saat Anda " +
+      "mengklik “Pakai berkas ini”.", "kecil"));
+
+    const formulir = teks("form", undefined, "baris-tombol");
+    const isian = teks("input", undefined, "cari-berkas");
+    isian.type = "text";
+    isian.placeholder = "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe";
+    isian.setAttribute("aria-label", "Jalur berkas peramban");
+    const pakai = teks("button", "Pakai berkas ini", "kedua");
+    pakai.type = "submit";
+    formulir.append(isian, pakai);
+    formulir.addEventListener("submit", async (acara) => {
+      acara.preventDefault();
+      const jalur = (isian.value || "").trim().replace(/^"|"$/g, "");
+      if (!jalur) {
+        pesan("galat", "Isi dulu jalur berkas perambannya, lalu klik “Pakai berkas ini”.");
+        return;
+      }
+      pakai.disabled = true;
+      pakai.textContent = "Menguji…";
+      try {
+        const hasil = await ambil("/api/radar/peramban", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ jalur: jalur }),
+        });
+        pesan(hasil.berhasil ? "" : "galat", hasil.pesan);
+        segarkanPeramban(data);
+      } catch (error) {
+        pesan("galat", error.message);
+      } finally {
+        pakai.disabled = false;
+        pakai.textContent = "Pakai berkas ini";
+      }
+    });
+    kartu.append(formulir);
+
+    if (Array.isArray(data.dicari) && data.dicari.length) {
+      const rincian = teks("details");
+      rincian.append(teks("summary", "Yang sudah dicari (" + data.dicari.length + " lokasi)"));
+      const daftar = teks("ul");
+      for (const butir of data.dicari) {
+        daftar.append(teks("li", (butir.jalur || "") + " — " + (butir.alasan || "")));
+      }
+      rincian.append(daftar);
+      kartu.append(rincian);
+    }
+  }
+
+  if (data.mode_render === "auto" && data.tersedia) {
+    kartu.append(teks("p", "Pemeriksaan memakai mode “auto”: halaman yang terbaca pendek dan " +
+      "tampak disusun JavaScript diambil ulang dengan peramban. Gambar dan font tidak diunduh, " +
+      "sehingga situs orang tidak dibebani lebih dari perlu.", "kecil"));
+  } else if (!data.tersedia) {
+    kartu.append(teks("p", "Tanpa peramban, radar tetap berjalan — halaman ber-JavaScript hanya " +
+      "terbaca sebagian, dan laporan akan mengatakannya. Microsoft Edge atau Google Chrome yang " +
+      "sudah terpasang sudah cukup.", "kecil"));
+  }
+  if (data.jalur) kartu.append(teks("p", "Berkas: " + data.jalur, "kecil"));
+  kotak.append(kartu);
+}
+
+async function segarkanPeramban(cadangan) {
+  const segar = await ambil("/api/radar/peramban").catch(() => cadangan);
+  gambarPeramban(segar);
+}
+
+// Satu kartu dimuat sendiri-sendiri. Dulu kelima permintaan dirantai di dalam
+// satu `try`, sehingga satu endpoint yang gagal membuat kartu sesudahnya tidak
+// pernah digambar: penjadwal Windows yang menolak dibaca sudah cukup untuk
+// mengosongkan ringkasan dan daftar sasaran, padahal keduanya tidak ada
+// hubungannya dengan penjadwal. Kegagalan kini hanya mengisi kartunya sendiri.
+async function muatKartu(alamat, idKotak, gambar) {
+  try {
+    gambar(await ambil(alamat));
+  } catch (error) {
+    el(idKotak).replaceChildren(teks("div", "Gagal dimuat: " + error.message, "info galat"));
+  }
+}
+
+async function muatSemua() {
+  let status;
+  try {
+    status = await ambil("/api/radar/info");
+  } catch (error) {
+    pesan("galat", "Tidak bisa memuat data radar: " + error.message);
+    return;
+  }
+  gambarChip(status);
+  if (status.tersedia === false) {
+    pesan("galat", status.galat + " Antarmuka ini tetap berjalan, tetapi fitur radar tidak tersedia.");
+    el("periksa").disabled = true;
+    return;
+  }
+  if (status.luring) {
+    pesan("", "Mode luring aktif: pemeriksaan tidak dijalankan karena tidak ada permintaan keluar.");
+    el("periksa").disabled = true;
+  }
+  gambarProfil(status.profil);
+  await Promise.all([
+    muatKartu("/api/radar/peramban", "peramban", gambarPeramban),
+    muatKartu("/api/radar/jadwal", "jadwal", gambarJadwal),
+    muatKartu("/api/radar/sasaran", "sasaran", gambarSasaran),
+    muatKartu("/api/radar/ringkasan?hari=7", "ringkasan", gambarRingkasan),
+    muatKartu("/api/radar/perubahan?limit=20", "perubahan", gambarPerubahan),
+  ]);
+  gambarPekerjaan(status.pekerjaan);
+  await sinkronOtomatis(status.profil).catch(() => {});
+}
+
+async function sinkronOtomatis(profil) {
+  // Ikut pengaturan LokaSEO sejak awal: kalau radar belum punya profil, atau
+  // profilnya memang berasal dari LokaSEO, ambil ulang dari penyimpanan proyek.
+  const data = bacaPenyimpananLokaSEO();
+  if (!data) return;
+  const belumAda = !profil || (!profil.jenis && !profil.nama);
+  const dariLokaSEO = profil && (profil.sumber || "").indexOf("LokaSEO") >= 0;
+  if (belumAda || dariLokaSEO) await sinkronkan(false);
+}
+
+function gambarPekerjaan(pekerjaan) {
+  if (!pekerjaan) return;
+  const status = el("status");
+  if (pekerjaan.keadaan === "berjalan") {
+    status.textContent = "Sedang memeriksa… halaman diambil satu per satu dengan jeda sopan.";
+    el("periksa").disabled = true;
+    return;
+  }
+  el("periksa").disabled = false;
+  if (pekerjaan.keadaan === "selesai" && pekerjaan.ringkasan) {
+    const r = pekerjaan.ringkasan;
+    status.textContent = "Selesai: " + r.diperiksa + " diperiksa, " + r.gagal + " gagal, " +
+      r.dilewati + " dilewati, " + r.perubahan + " perubahan (" + r.durasi_detik + " detik).";
+  } else if (pekerjaan.keadaan === "gagal") {
+    status.textContent = "Pemeriksaan gagal: " + pekerjaan.galat;
+  }
+}
+
+let pemonitor = null;
+
+async function periksa() {
+  pesan("", "");
+  el("periksa").disabled = true;
+  try {
+    await ambil("/api/radar/periksa", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({}),
+    });
+  } catch (error) {
+    pesan("galat", error.message);
+    el("periksa").disabled = false;
+    return;
+  }
+  el("status").textContent = "Sedang memeriksa…";
+  if (pemonitor) clearInterval(pemonitor);
+  pemonitor = setInterval(async () => {
+    try {
+      const status = await ambil("/api/radar/info");
+      gambarPekerjaan(status.pekerjaan);
+      gambarChip(status);
+      if (status.pekerjaan.keadaan !== "berjalan") {
+        clearInterval(pemonitor);
+        pemonitor = null;
+        // Kartu dimuat sendiri-sendiri di sini juga: kalau salah satunya gagal,
+        // hasil pemeriksaan yang baru selesai tetap harus terlihat.
+        await Promise.all([
+          muatKartu("/api/radar/sasaran", "sasaran", gambarSasaran),
+          muatKartu("/api/radar/ringkasan?hari=7", "ringkasan", gambarRingkasan),
+          muatKartu("/api/radar/perubahan?limit=20", "perubahan", gambarPerubahan),
+        ]);
+      }
+    } catch (error) {
+      clearInterval(pemonitor);
+      pemonitor = null;
+      pesan("galat", "Gagal memantau pemeriksaan: " + error.message);
+      el("periksa").disabled = false;
+    }
+  }, 2000);
+}
+
+async function tambahSasaran(kejadian) {
+  kejadian.preventDefault();
+  const url = el("url").value.trim();
+  if (!url) return;
+  try {
+    await ambil("/api/radar/tambah", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ url: url, label: el("label").value.trim(), jenis: el("jenis").value }),
+    });
+    el("url").value = "";
+    el("label").value = "";
+    pesan("", "Sasaran ditambahkan. Klik “Periksa sekarang” untuk potret pertama.");
+    await muatSemua();
+  } catch (error) {
+    pesan("galat", error.message);
+  }
+}
+
+async function hapusSasaran(sasaran) {
+  if (!window.confirm("Hapus sasaran “" + sasaran.label + "” beserta riwayatnya?")) return;
+  try {
+    await ambil("/api/radar/hapus", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id: sasaran.id }),
+    });
+    pesan("", "Sasaran dihapus.");
+    await muatSemua();
+  } catch (error) {
+    pesan("galat", error.message);
+  }
+}
+
+// -- berkas daftar sasaran: unduh dan impor -------------------------------
+let sasaranTerkini = [];
+
+function berkasSasaran(contoh) {
+  const unduh = el("unduh-sasaran");
+  const pilih = el("pilih-impor");
+  const input = el("berkas-sasaran");
+  if (!unduh || !pilih || !input) return;
+  unduh.disabled = contoh;
+  pilih.disabled = contoh;
+  unduh.addEventListener("click", () => {
+    if (contoh) return;
+    tulisPesanSasaran("", ["Menyiapkan berkas…"]);
+    ambil("/api/radar/sasaran/ekspor")
+      .then((berkas) => {
+        const nama = berkas.nama_berkas || "sasaran-radar.json";
+        delete berkas.nama_berkas;
+        const tautan = document.createElement("a");
+        // Berkas ditutup satu baris baru supaya rapi saat dibuka di editor.
+        const isiBerkas = JSON.stringify(berkas, null, 2) + String.fromCharCode(10);
+        const alamat = URL.createObjectURL(new Blob([isiBerkas], { type: "application/json" }));
+        tautan.href = alamat;
+        tautan.download = nama;
+        document.body.append(tautan);
+        tautan.click();
+        tautan.remove();
+        URL.revokeObjectURL(alamat);
+        const jumlah = (berkas.sasaran || []).length;
+        tulisPesanSasaran("", [
+          jumlah
+            ? "Berkas " + nama + " berisi " + jumlah + " sasaran dikirim ke folder Unduhan komputer Anda."
+            : "Berkas " + nama + " dibuat, tetapi daftar sasarannya masih kosong.",
+        ]);
+      })
+      .catch((error) => tulisPesanSasaran("galat", ["Tidak bisa menyiapkan berkas: " + error.message]));
+  });
+  pilih.addEventListener("click", () => {
+    if (!contoh) input.click();
+  });
+  input.addEventListener("change", async () => {
+    const berkas = input.files && input.files[0];
+    if (!berkas) return;
+    tulisPesanSasaran("", ["Membaca " + berkas.name + "…"]);
+    try {
+      const teks = await berkas.text();
+      const hasil = await ambil("/api/radar/sasaran/impor", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ teks: teks, nama: berkas.name }),
+      });
+      tulisPesanSasaran("", (hasil.ringkasan || []).concat(["Berkas: " + berkas.name]));
+      gambarChip(await ambil("/api/radar/info"));
+      gambarSasaran(await ambil("/api/radar/sasaran"));
+    } catch (error) {
+      tulisPesanSasaran("galat", [error.message]);
+    } finally {
+      input.value = "";
+    }
+  });
+}
+
+function tulisPesanSasaran(kind, baris) {
+  const kotak = el("pesan-sasaran");
+  if (!kotak) return;
+  kotak.replaceChildren();
+  if (!baris.length) return;
+  const pembungkus = teks("div", undefined, "info" + (kind === "galat" ? " galat" : ""));
+  baris.forEach((satu) => pembungkus.append(teks("div", satu, "kecil")));
+  kotak.append(pembungkus);
+}
+
+// -- kesiapan aplikasi ------------------------------------------------------
+async function periksaKesiapan() {
+  const tombol = el("periksa-kesiapan");
+  if (tombol) {
+    tombol.disabled = true;
+    tombol.textContent = "Memeriksa…";
+  }
+  try {
+    gambarKesiapan(await ambil("/api/kesiapan"));
+  } catch (error) {
+    const kotak = el("kesiapan");
+    if (kotak) kotak.replaceChildren(teks("div", "Tidak bisa memeriksa kesiapan: " + error.message, "info galat"));
+  } finally {
+    if (tombol) {
+      tombol.disabled = false;
+      tombol.textContent = "Periksa kesiapan";
+    }
+  }
+}
+
+const KESIMPULAN = {
+  lulus: "baik",
+  perhatian: "perlu diatur",
+  gagal: "perlu diperbaiki",
+};
+
+function gambarKesiapan(data) {
+  const kotak = el("kesiapan");
+  if (!kotak) return;
+  kotak.replaceChildren();
+  const kartu = teks("div", undefined, "kartu");
+  const r = data.ringkasan || { lulus: 0, perhatian: 0, gagal: 0 };
+  const ringkas = teks("p");
+  ringkas.append(teks("b", String(r.lulus || 0) + " baik"));
+  ringkas.append(teks("span", " · " + (r.perhatian || 0) + " perlu diatur · " + (r.gagal || 0) + " perlu diperbaiki"));
+  kartu.append(ringkas);
+  if (Number(r.gagal) === 0) {
+    kartu.append(teks("p", "Tidak ada butir yang gagal." + (Number(r.perhatian) ? " Butir “perlu diatur” bukan kerusakan — hanya belum diisi atau belum dipakai." : ""), "kecil"));
+  }
+  const daftar = teks("ul", undefined, "daftar");
+  (data.butir || []).forEach((butir) => {
+    const li = teks("li");
+    li.append(teks("span", "[" + butir.keadaan.toUpperCase() + "]", "kecil"));
+    const isi = teks("div");
+    isi.append(teks("b", butir.nama + ": "));
+    isi.append(teks("span", butir.nilai));
+    if (butir.saran) isi.append(teks("div", butir.saran, "kecil"));
+    li.append(isi);
+    daftar.append(li);
+  });
+  kartu.append(daftar);
+
+  const salinan = document.createElement("textarea");
+  salinan.id = "laporan-kesiapan";
+  salinan.readOnly = true;
+  salinan.rows = 12;
+  salinan.value = data.teks || "";
+  salinan.setAttribute("aria-label", "Laporan kesiapan dalam bentuk teks");
+  kartu.append(salinan);
+
+  const barisTombol = teks("div", undefined, "baris-tombol");
+  const ulangi = teks("button", "Periksa kesiapan");
+  ulangi.type = "button";
+  ulangi.id = "periksa-kesiapan-ulang";
+  ulangi.addEventListener("click", periksaKesiapan);
+  const salin = teks("button", "Salin laporan", "kedua");
+  salin.type = "button";
+  salin.addEventListener("click", async () => {
+    const isi = el("laporan-kesiapan");
+    try {
+      await navigator.clipboard.writeText(isi.value);
+      salin.textContent = "Tersalin";
+    } catch (error) {
+      // Tanpa izin papan klip (mis. halaman bukan HTTPS), pilih teksnya supaya
+      // pengguna tinggal menekan Ctrl+C.
+      isi.focus();
+      isi.select();
+      salin.textContent = "Tekan Ctrl+C";
+    }
+    setTimeout(() => {
+      salin.textContent = "Salin laporan";
+    }, 4000);
+  });
+  barisTombol.append(ulangi, salin);
+  kartu.append(barisTombol);
+  kartu.append(teks("p", "Tempelkan laporan ini pada percakapan dukungan bila ada butir yang gagal. " +
+    "Di dalamnya tidak ada kunci API, isi halaman, maupun daftar alamat Anda.", "kecil"));
+  kotak.append(kartu);
+}
+
+async function muatLaporan() {
+  const kotak = el("laporan");
+  kotak.className = "laporan";
+  kotak.replaceChildren(teks("p", "Memuat…", "kecil"));
+  try {
+    const data = await ambil("/api/radar/laporan");
+    kotak.replaceChildren();
+    kotak.append(teks("p", "Berkas: " + data.nama, "kecil"));
+    const isi = document.createElement("div");
+    isi.innerHTML = markdown(data.markdown || "");
+    kotak.append(isi);
+  } catch (error) {
+    kotak.className = "info kosong";
+    kotak.replaceChildren(teks("p", error.message));
+  }
+}
+
+function mulai() {
+  if (window.__RADAR_DATA__) {
+    gambarChip(window.__RADAR_DATA__.info || {});
+    gambarProfil((window.__RADAR_DATA__.info || {}).profil);
+    gambarPeramban(window.__RADAR_DATA__.peramban || null);
+    gambarJadwal(window.__RADAR_DATA__.jadwal || null);
+    gambarSasaran(window.__RADAR_DATA__.sasaran || []);
+    gambarRingkasan(window.__RADAR_DATA__.ringkasan || null);
+    gambarPerubahan(window.__RADAR_DATA__.perubahan || []);
+    berkasSasaran(true);
+    const periksaKesiapanContoh = el("periksa-kesiapan");
+    if (periksaKesiapanContoh) periksaKesiapanContoh.disabled = true;
+    el("periksa").disabled = true;
+    pesan("", "Ini contoh tampilan (data disimpan di dalam berkas). Tombol tidak aktif.");
+    return;
+  }
+  el("periksa").addEventListener("click", periksa);
+  el("muat").addEventListener("click", muatSemua);
+  el("lapor").addEventListener("click", muatLaporan);
+  el("form-tambah").addEventListener("submit", tambahSasaran);
+  berkasSasaran(false);
+  const tombolKesiapan = el("periksa-kesiapan");
+  if (tombolKesiapan) tombolKesiapan.addEventListener("click", periksaKesiapan);
+  muatSemua();
+}
+
+document.addEventListener("DOMContentLoaded", mulai);
+
+</script>
+</body>
+</html>

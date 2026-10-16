@@ -1,0 +1,225 @@
+{
+  "schema": "lokaradar.insight.v1",
+  "dibuat_pada": "2026-10-14T09:19:08Z",
+  "sejak": "2026-09-30T09:19:08Z",
+  "profil": null,
+  "ringkasan": {
+    "sasaran": 1,
+    "perubahan": 1,
+    "per_tingkat": {
+      "info": 1
+    },
+    "per_jenis": {
+      "pemantauan_dimulai": 1
+    }
+  },
+  "sasaran": [
+    {
+      "url": "http://127.0.0.1:8177/",
+      "label": "Kopi Ranah",
+      "jenis": "harga",
+      "diperiksa_pada": "2026-10-14T09:19:07Z",
+      "status": 200,
+      "judul": "Kopi Ranah — Kedai Kopi Bogor",
+      "deskripsi": "",
+      "harga": [
+        {
+          "amount": 18000.0,
+          "currency": "IDR",
+          "source": "teks",
+          "name": ""
+        },
+        {
+          "amount": 24000.0,
+          "currency": "IDR",
+          "source": "teks",
+          "name": ""
+        },
+        {
+          "amount": 28000.0,
+          "currency": "IDR",
+          "source": "teks",
+          "name": ""
+        },
+        {
+          "amount": 32000.0,
+          "currency": "IDR",
+          "source": "teks",
+          "name": ""
+        }
+      ],
+      "harga_terendah": {
+        "amount": 18000.0,
+        "currency": "IDR",
+        "source": "teks",
+        "name": ""
+      },
+      "rating": {
+        "value": 4.7,
+        "count": 158,
+        "scale": 5.0
+      },
+      "data_terstruktur": [
+        "CafeOrCoffeeShop"
+      ],
+      "ringkas_halaman": {
+        "jumlah_kata": 95,
+        "judul_utama": 1,
+        "gambar_tanpa_alt": 0,
+        "noindex": false
+      },
+      "perubahan": [
+        {
+          "id": 1,
+          "target_id": 1,
+          "detected_at": "2026-10-14T09:19:07Z",
+          "type": "pemantauan_dimulai",
+          "severity": "info",
+          "message": "Pemantauan pertama: potret awal disimpan sebagai dasar pembanding.",
+          "before_value": "null",
+          "after_value": "{\"title\": \"Kopi Ranah — Kedai Kopi Bogor\", \"harga\": [{\"amount\": 18000.0, \"currency\": \"IDR\", \"source\": \"teks\", \"name\": \"\"}, {\"amount\": 24000.0, \"currency\": \"IDR\", \"source\": \"teks\", \"name\": \"\"}, {\"amount\": 28000.0, \"currency\": \"IDR\", \"source\": \"teks\", \"name\": \"\"}, {\"amount\": 32000.0, \"currency\": \"IDR\", \"source\": \"teks\", \"name\": \"\"}]}",
+          "seen": 0,
+          "url": "http://127.0.0.1:8177/",
+          "label": "Kopi Ranah",
+          "before": null,
+          "after": {
+            "title": "Kopi Ranah — Kedai Kopi Bogor",
+            "harga": [
+              {
+                "amount": 18000.0,
+                "currency": "IDR",
+                "source": "teks",
+                "name": ""
+              },
+              {
+                "amount": 24000.0,
+                "currency": "IDR",
+                "source": "teks",
+                "name": ""
+              },
+              {
+                "amount": 28000.0,
+                "currency": "IDR",
+                "source": "teks",
+                "name": ""
+              },
+              {
+                "amount": 32000.0,
+                "currency": "IDR",
+                "source": "teks",
+                "name": ""
+              }
+            ]
+          }
+        }
+      ],
+      "dirender": true,
+      "render_gagal": "",
+      "catatan_ambil": "Halaman ini diambil ulang dengan peramban karena isi aslinya dibuat JavaScript, jadi angkanya baru terbaca setelah dirender.",
+      "perlu_render": false
+    }
+  ],
+  "reputasi": {
+    "periode_hari": 14,
+    "dibuat_pada": "2026-10-14T09:19:08Z",
+    "usaha": "",
+    "jenis_usaha": "",
+    "ambang_rating": 4.0,
+    "ambang_laju_mingguan": 1.0,
+    "ringkasan": {
+      "usaha": 1,
+      "dengan_rating": 1,
+      "rata_rata_rating": 4.7,
+      "rata_rata_setara_5": 4.7,
+      "total_ulasan": 158,
+      "total_ulasan_baru": null,
+      "tanpa_rating": 0
+    },
+    "peringkat": [
+      {
+        "target_id": 1,
+        "label": "Kopi Ranah",
+        "url": "http://127.0.0.1:8177/",
+        "jenis": "harga",
+        "sumber": "halaman",
+        "periode_hari": 14,
+        "jumlah_potret": 1,
+        "titik": [
+          {
+            "tanggal": "2026-10-14T09:19:07Z",
+            "status": 200,
+            "rating": 4.7,
+            "ulasan": 158,
+            "skala": 5.0
+          }
+        ],
+        "rating": 4.7,
+        "skala": 5.0,
+        "rasio": 0.94,
+        "rating_awal": 4.7,
+        "perubahan_rating": null,
+        "ulasan": 158,
+        "ulasan_awal": 158,
+        "ulasan_baru": null,
+        "laju_mingguan": null,
+        "hari_terukur": null,
+        "pangsa_ulasan": 100.0,
+        "tanda": [
+          "data_kurang"
+        ],
+        "milik_sendiri": false,
+        "peringkat": 1
+      }
+    ],
+    "perhatian": [
+      {
+        "target_id": 1,
+        "label": "Kopi Ranah",
+        "url": "http://127.0.0.1:8177/",
+        "jenis": "harga",
+        "sumber": "halaman",
+        "periode_hari": 14,
+        "jumlah_potret": 1,
+        "titik": [
+          {
+            "tanggal": "2026-10-14T09:19:07Z",
+            "status": 200,
+            "rating": 4.7,
+            "ulasan": 158,
+            "skala": 5.0
+          }
+        ],
+        "rating": 4.7,
+        "skala": 5.0,
+        "rasio": 0.94,
+        "rating_awal": 4.7,
+        "perubahan_rating": null,
+        "ulasan": 158,
+        "ulasan_awal": 158,
+        "ulasan_baru": null,
+        "laju_mingguan": null,
+        "hari_terukur": null,
+        "pangsa_ulasan": 100.0,
+        "tanda": [
+          "data_kurang"
+        ],
+        "milik_sendiri": false,
+        "peringkat": 1
+      }
+    ],
+    "belum_terperiksa": [],
+    "catatan": []
+  },
+  "lokaseo": {
+    "ide_konten": [],
+    "cek_list": [],
+    "catatan": [
+      "Halaman Kopi Ranah diambil ulang dengan peramban karena isinya dibuat JavaScript."
+    ]
+  },
+  "catatan_pemakaian": [
+    "Data diambil dari halaman publik tanpa login, dengan jeda sopan dan menghormati robots.txt.",
+    "Hanya angka agregat (rating, jumlah ulasan) yang disimpan; identitas penulis ulasan tidak diambil.",
+    "Angka dapat berubah kapan saja; verifikasi sebelum memakai untuk keputusan penting."
+  ]
+}

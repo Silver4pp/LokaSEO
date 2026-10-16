@@ -13,6 +13,12 @@ const authModeSchema = z.enum(AUTH_MODES);
 const warnedInvalidAuthModes = new Set<string>();
 
 export function getAuthMode(value: string | null | undefined): AuthMode {
+  // This fork supports self-hosting only. Never downgrade hosted auth to no-auth.
+  if (value === "hosted") {
+    throw new Error(
+      "LokaSEO tidak mendukung AUTH_MODE=hosted. Gunakan cloudflare_access untuk deployment publik atau local_noauth hanya pada perangkat tepercaya.",
+    );
+  }
   const parsed = authModeSchema.safeParse(value);
   if (parsed.success) return parsed.data;
 

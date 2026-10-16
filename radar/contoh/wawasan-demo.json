@@ -1,0 +1,249 @@
+{
+  "schema": "lokaradar.insight.v1",
+  "dibuat_pada": "2026-10-14T08:27:50Z",
+  "sejak": "2026-09-14T08:27:50Z",
+  "ringkasan": {
+    "sasaran": 1,
+    "perubahan": 4,
+    "per_tingkat": {
+      "sedang": 2,
+      "tinggi": 1,
+      "info": 1
+    },
+    "per_jenis": {
+      "jumlah_ulasan_berubah": 1,
+      "bagian_baru": 1,
+      "harga_turun": 1,
+      "pemantauan_dimulai": 1
+    }
+  },
+  "sasaran": [
+    {
+      "url": "http://127.0.0.1:8123/",
+      "label": "Kopi Bogor (pesaing)",
+      "jenis": "harga",
+      "diperiksa_pada": "2026-10-14T08:21:37Z",
+      "status": 200,
+      "judul": "Kopi Bogor — Pesan Online",
+      "deskripsi": "Kopi arabika Bogor, pesan online",
+      "harga": [
+        {
+          "amount": 120000.0,
+          "currency": "IDR",
+          "source": "json-ld",
+          "name": "Kopi Bogor"
+        }
+      ],
+      "harga_terendah": {
+        "amount": 120000.0,
+        "currency": "IDR",
+        "source": "json-ld",
+        "name": "Kopi Bogor"
+      },
+      "rating": {
+        "value": 4.5,
+        "count": 130,
+        "scale": 5.0
+      },
+      "data_terstruktur": [
+        "LocalBusiness"
+      ],
+      "ringkas_halaman": {
+        "jumlah_kata": 15,
+        "judul_utama": 1,
+        "gambar_tanpa_alt": 1,
+        "noindex": false
+      },
+      "perubahan": [
+        {
+          "id": 4,
+          "target_id": 1,
+          "detected_at": "2026-10-14T08:21:37Z",
+          "type": "jumlah_ulasan_berubah",
+          "severity": "sedang",
+          "message": "Jumlah ulasan bertambah 30 (dari 100 menjadi 130).",
+          "before_value": "100",
+          "after_value": "130",
+          "seen": 0,
+          "url": "http://127.0.0.1:8123/",
+          "label": "Kopi Bogor (pesaing)",
+          "before": 100,
+          "after": 130
+        },
+        {
+          "id": 3,
+          "target_id": 1,
+          "detected_at": "2026-10-14T08:21:37Z",
+          "type": "bagian_baru",
+          "severity": "sedang",
+          "message": "Bagian baru di halaman: “Layanan Pernikahan”. Bisa menandakan layanan atau penawaran baru.",
+          "before_value": "null",
+          "after_value": "\"Layanan Pernikahan\"",
+          "seen": 0,
+          "url": "http://127.0.0.1:8123/",
+          "label": "Kopi Bogor (pesaing)",
+          "before": null,
+          "after": "Layanan Pernikahan"
+        },
+        {
+          "id": 2,
+          "target_id": 1,
+          "detected_at": "2026-10-14T08:21:37Z",
+          "type": "harga_turun",
+          "severity": "tinggi",
+          "message": "Kopi Bogor turun 20.0% menjadi IDR 120.000.",
+          "before_value": "\"IDR 150.000\"",
+          "after_value": "\"IDR 120.000\"",
+          "seen": 0,
+          "url": "http://127.0.0.1:8123/",
+          "label": "Kopi Bogor (pesaing)",
+          "before": "IDR 150.000",
+          "after": "IDR 120.000"
+        },
+        {
+          "id": 1,
+          "target_id": 1,
+          "detected_at": "2026-10-14T08:21:36Z",
+          "type": "pemantauan_dimulai",
+          "severity": "info",
+          "message": "Pemantauan pertama: potret awal disimpan sebagai dasar pembanding.",
+          "before_value": "null",
+          "after_value": "{\"title\": \"Kopi Bogor — Pesan Online\", \"harga\": [{\"amount\": 150000.0, \"currency\": \"IDR\", \"source\": \"json-ld\", \"name\": \"Kopi Bogor\"}]}",
+          "seen": 0,
+          "url": "http://127.0.0.1:8123/",
+          "label": "Kopi Bogor (pesaing)",
+          "before": null,
+          "after": {
+            "title": "Kopi Bogor — Pesan Online",
+            "harga": [
+              {
+                "amount": 150000.0,
+                "currency": "IDR",
+                "source": "json-ld",
+                "name": "Kopi Bogor"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "reputasi": {
+    "periode_hari": 30,
+    "dibuat_pada": "2026-10-14T08:27:50Z",
+    "ambang_rating": 4.0,
+    "ambang_laju_mingguan": 1.0,
+    "ringkasan": {
+      "usaha": 1,
+      "dengan_rating": 1,
+      "rata_rata_rating": 4.5,
+      "total_ulasan": 130,
+      "total_ulasan_baru": 30,
+      "tanpa_rating": 0
+    },
+    "peringkat": [
+      {
+        "target_id": 1,
+        "label": "Kopi Bogor (pesaing)",
+        "url": "http://127.0.0.1:8123/",
+        "jenis": "harga",
+        "sumber": "halaman",
+        "periode_hari": 30,
+        "jumlah_potret": 2,
+        "titik": [
+          {
+            "tanggal": "2026-10-14T08:21:36Z",
+            "status": 200,
+            "rating": 4.5,
+            "ulasan": 100,
+            "skala": 5.0
+          },
+          {
+            "tanggal": "2026-10-14T08:21:37Z",
+            "status": 200,
+            "rating": 4.5,
+            "ulasan": 130,
+            "skala": 5.0
+          }
+        ],
+        "rating": 4.5,
+        "skala": 5.0,
+        "rating_awal": 4.5,
+        "perubahan_rating": 0.0,
+        "ulasan": 130,
+        "ulasan_awal": 100,
+        "ulasan_baru": 30,
+        "laju_mingguan": null,
+        "hari_terukur": 0.0,
+        "pangsa_ulasan": 100.0,
+        "tanda": [],
+        "peringkat": 1
+      }
+    ],
+    "perhatian": [],
+    "belum_terperiksa": [
+      "Halaman terlarang"
+    ]
+  },
+  "lokaseo": {
+    "ide_konten": [
+      {
+        "judul": "Cara meminta ulasan pelanggan tanpa melanggar aturan Google",
+        "alasan": "Jumlah ulasan bertambah 30 (dari 100 menjadi 130).",
+        "kata_kunci_usulan": [
+          "meminta ulasan google",
+          "ulasan pelanggan",
+          "reputasi lokal"
+        ],
+        "sumber": "LokaRadar"
+      },
+      {
+        "judul": "Menyiapkan halaman layanan serupa: Layanan Pernikahan",
+        "alasan": "Bagian baru di halaman: “Layanan Pernikahan”. Bisa menandakan layanan atau penawaran baru.",
+        "kata_kunci_usulan": [
+          "layanan pernikahan"
+        ],
+        "sumber": "LokaRadar"
+      },
+      {
+        "judul": "Menjelaskan nilai layanan saat harga pesaing turun (Kopi Bogor (pesaing))",
+        "alasan": "Kopi Bogor turun 20.0% menjadi IDR 120.000.",
+        "kata_kunci_usulan": [
+          "layanan katering kantor",
+          "layanan pernikahan"
+        ],
+        "sumber": "LokaRadar"
+      }
+    ],
+    "cek_list": [
+      {
+        "judul": "Jalankan permintaan ulasan ke pelanggan lama",
+        "keterangan": "Jumlah ulasan bertambah 30 (dari 100 menjadi 130).",
+        "prioritas": "tinggi"
+      },
+      {
+        "judul": "Periksa apakah layanan ini perlu Anda tawarkan",
+        "keterangan": "Kopi Bogor (pesaing): Bagian baru di halaman: “Layanan Pernikahan”. Bisa menandakan layanan atau penawaran baru.",
+        "prioritas": "sedang"
+      },
+      {
+        "judul": "Tinjau harga dan paket sendiri",
+        "keterangan": "Kopi Bogor (pesaing): Kopi Bogor turun 20.0% menjadi IDR 120.000.",
+        "prioritas": "tinggi"
+      },
+      {
+        "judul": "Lengkapi profil bisnis lokal sendiri",
+        "keterangan": "Kopi Bogor (pesaing) memakai data terstruktur bisnis lokal; pastikan situs Anda juga mengenali kota layanan.",
+        "prioritas": "sedang"
+      }
+    ],
+    "catatan": [
+      "Kopi Bogor (pesaing): 1 gambar tanpa teks alternatif — periksa apakah situs Anda lebih rapi."
+    ]
+  },
+  "catatan_pemakaian": [
+    "Data diambil dari halaman publik tanpa login, dengan jeda sopan dan menghormati robots.txt.",
+    "Hanya angka agregat (rating, jumlah ulasan) yang disimpan; identitas penulis ulasan tidak diambil.",
+    "Angka dapat berubah kapan saja; verifikasi sebelum memakai untuk keputusan penting."
+  ]
+}

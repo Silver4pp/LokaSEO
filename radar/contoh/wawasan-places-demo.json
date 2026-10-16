@@ -1,0 +1,405 @@
+{
+  "schema": "lokaradar.insight.v1",
+  "dibuat_pada": "2026-10-14T08:56:53Z",
+  "sejak": "2026-09-14T08:56:53Z",
+  "profil": {
+    "nama": "Klinik Gigi Sehat Bogor",
+    "jenis": "klinik-kesehatan",
+    "kota": "Bogor",
+    "situs": "kliniksehat.example",
+    "min_rating": null,
+    "sumber": "diatur lewat perintah profil",
+    "versi": 1,
+    "catatan_tambahan": []
+  },
+  "ringkasan": {
+    "sasaran": 2,
+    "perubahan": 4,
+    "per_tingkat": {
+      "sedang": 2,
+      "info": 2
+    },
+    "per_jenis": {
+      "rating_berubah": 1,
+      "jumlah_ulasan_berubah": 1,
+      "pemantauan_dimulai": 2
+    }
+  },
+  "sasaran": [
+    {
+      "url": "tempat:ChIJkliniksehatbogor",
+      "label": "Klinik Gigi Sehat Bogor",
+      "jenis": "reputasi",
+      "diperiksa_pada": "2026-10-14T08:56:53Z",
+      "status": 200,
+      "judul": "Klinik Gigi Sehat Bogor",
+      "deskripsi": "",
+      "harga": [],
+      "harga_terendah": null,
+      "rating": {
+        "value": 4.3,
+        "count": 239,
+        "scale": 5.0
+      },
+      "data_terstruktur": [
+        "Place"
+      ],
+      "ringkas_halaman": {
+        "jumlah_kata": 0,
+        "judul_utama": null,
+        "gambar_tanpa_alt": 0,
+        "noindex": false
+      },
+      "perubahan": [
+        {
+          "id": 4,
+          "target_id": 1,
+          "detected_at": "2026-10-14T08:56:53Z",
+          "type": "rating_berubah",
+          "severity": "sedang",
+          "message": "Rating agregat berubah dari 4.6 menjadi 4.3.",
+          "before_value": "4.6",
+          "after_value": "4.3",
+          "seen": 0,
+          "url": "tempat:ChIJkliniksehatbogor",
+          "label": "Klinik Gigi Sehat Bogor",
+          "before": 4.6,
+          "after": 4.3
+        },
+        {
+          "id": 3,
+          "target_id": 1,
+          "detected_at": "2026-10-14T08:56:53Z",
+          "type": "jumlah_ulasan_berubah",
+          "severity": "sedang",
+          "message": "Jumlah ulasan bertambah 25 (dari 214 menjadi 239).",
+          "before_value": "214",
+          "after_value": "239",
+          "seen": 0,
+          "url": "tempat:ChIJkliniksehatbogor",
+          "label": "Klinik Gigi Sehat Bogor",
+          "before": 214,
+          "after": 239
+        },
+        {
+          "id": 1,
+          "target_id": 1,
+          "detected_at": "2026-10-14T08:56:52Z",
+          "type": "pemantauan_dimulai",
+          "severity": "info",
+          "message": "Pemantauan pertama: potret awal disimpan sebagai dasar pembanding.",
+          "before_value": "null",
+          "after_value": "{\"title\": \"Klinik Gigi Sehat Bogor\", \"harga\": []}",
+          "seen": 0,
+          "url": "tempat:ChIJkliniksehatbogor",
+          "label": "Klinik Gigi Sehat Bogor",
+          "before": null,
+          "after": {
+            "title": "Klinik Gigi Sehat Bogor",
+            "harga": []
+          }
+        }
+      ]
+    },
+    {
+      "url": "tempat:ChIJklinikgigibogor2",
+      "label": "Klinik Gigi Bogor Selatan",
+      "jenis": "reputasi",
+      "diperiksa_pada": "2026-10-14T08:56:53Z",
+      "status": 200,
+      "judul": "Klinik Gigi Bogor Selatan",
+      "deskripsi": "",
+      "harga": [],
+      "harga_terendah": null,
+      "rating": {
+        "value": 4.1,
+        "count": 57,
+        "scale": 5.0
+      },
+      "data_terstruktur": [
+        "Place"
+      ],
+      "ringkas_halaman": {
+        "jumlah_kata": 0,
+        "judul_utama": null,
+        "gambar_tanpa_alt": 0,
+        "noindex": false
+      },
+      "perubahan": [
+        {
+          "id": 2,
+          "target_id": 2,
+          "detected_at": "2026-10-14T08:56:52Z",
+          "type": "pemantauan_dimulai",
+          "severity": "info",
+          "message": "Pemantauan pertama: potret awal disimpan sebagai dasar pembanding.",
+          "before_value": "null",
+          "after_value": "{\"title\": \"Klinik Gigi Bogor Selatan\", \"harga\": []}",
+          "seen": 0,
+          "url": "tempat:ChIJklinikgigibogor2",
+          "label": "Klinik Gigi Bogor Selatan",
+          "before": null,
+          "after": {
+            "title": "Klinik Gigi Bogor Selatan",
+            "harga": []
+          }
+        }
+      ]
+    }
+  ],
+  "reputasi": {
+    "periode_hari": 30,
+    "dibuat_pada": "2026-10-14T08:56:53Z",
+    "usaha": "Klinik Gigi Sehat Bogor · jenis: Klinik, apotek, atau praktik kesehatan · kota: Bogor · situs: kliniksehat.example",
+    "jenis_usaha": "Klinik, apotek, atau praktik kesehatan",
+    "ambang_rating": 4.4,
+    "ambang_laju_mingguan": 1.0,
+    "ringkasan": {
+      "usaha": 2,
+      "dengan_rating": 2,
+      "rata_rata_rating": 4.2,
+      "rata_rata_setara_5": 4.2,
+      "total_ulasan": 296,
+      "total_ulasan_baru": 25,
+      "tanpa_rating": 0
+    },
+    "peringkat": [
+      {
+        "target_id": 1,
+        "label": "Klinik Gigi Sehat Bogor",
+        "url": "tempat:ChIJkliniksehatbogor",
+        "jenis": "reputasi",
+        "sumber": "places-api",
+        "periode_hari": 30,
+        "jumlah_potret": 2,
+        "titik": [
+          {
+            "tanggal": "2026-10-14T08:56:52Z",
+            "status": 200,
+            "rating": 4.6,
+            "ulasan": 214,
+            "skala": 5.0
+          },
+          {
+            "tanggal": "2026-10-14T08:56:53Z",
+            "status": 200,
+            "rating": 4.3,
+            "ulasan": 239,
+            "skala": 5.0
+          }
+        ],
+        "rating": 4.3,
+        "skala": 5.0,
+        "rasio": 0.86,
+        "rating_awal": 4.6,
+        "perubahan_rating": -0.3,
+        "ulasan": 239,
+        "ulasan_awal": 214,
+        "ulasan_baru": 25,
+        "laju_mingguan": null,
+        "hari_terukur": 0.0,
+        "pangsa_ulasan": 80.7,
+        "tanda": [
+          "rating_rendah",
+          "rating_turun"
+        ],
+        "milik_sendiri": false,
+        "peringkat": 1
+      },
+      {
+        "target_id": 2,
+        "label": "Klinik Gigi Bogor Selatan",
+        "url": "tempat:ChIJklinikgigibogor2",
+        "jenis": "reputasi",
+        "sumber": "places-api",
+        "periode_hari": 30,
+        "jumlah_potret": 2,
+        "titik": [
+          {
+            "tanggal": "2026-10-14T08:56:52Z",
+            "status": 200,
+            "rating": 4.1,
+            "ulasan": 57,
+            "skala": 5.0
+          },
+          {
+            "tanggal": "2026-10-14T08:56:53Z",
+            "status": 200,
+            "rating": 4.1,
+            "ulasan": 57,
+            "skala": 5.0
+          }
+        ],
+        "rating": 4.1,
+        "skala": 5.0,
+        "rasio": 0.82,
+        "rating_awal": 4.1,
+        "perubahan_rating": 0.0,
+        "ulasan": 57,
+        "ulasan_awal": 57,
+        "ulasan_baru": 0,
+        "laju_mingguan": null,
+        "hari_terukur": 0.0,
+        "pangsa_ulasan": 19.3,
+        "tanda": [
+          "rating_rendah"
+        ],
+        "milik_sendiri": false,
+        "peringkat": 2
+      }
+    ],
+    "perhatian": [
+      {
+        "target_id": 1,
+        "label": "Klinik Gigi Sehat Bogor",
+        "url": "tempat:ChIJkliniksehatbogor",
+        "jenis": "reputasi",
+        "sumber": "places-api",
+        "periode_hari": 30,
+        "jumlah_potret": 2,
+        "titik": [
+          {
+            "tanggal": "2026-10-14T08:56:52Z",
+            "status": 200,
+            "rating": 4.6,
+            "ulasan": 214,
+            "skala": 5.0
+          },
+          {
+            "tanggal": "2026-10-14T08:56:53Z",
+            "status": 200,
+            "rating": 4.3,
+            "ulasan": 239,
+            "skala": 5.0
+          }
+        ],
+        "rating": 4.3,
+        "skala": 5.0,
+        "rasio": 0.86,
+        "rating_awal": 4.6,
+        "perubahan_rating": -0.3,
+        "ulasan": 239,
+        "ulasan_awal": 214,
+        "ulasan_baru": 25,
+        "laju_mingguan": null,
+        "hari_terukur": 0.0,
+        "pangsa_ulasan": 80.7,
+        "tanda": [
+          "rating_rendah",
+          "rating_turun"
+        ],
+        "milik_sendiri": false,
+        "peringkat": 1
+      },
+      {
+        "target_id": 2,
+        "label": "Klinik Gigi Bogor Selatan",
+        "url": "tempat:ChIJklinikgigibogor2",
+        "jenis": "reputasi",
+        "sumber": "places-api",
+        "periode_hari": 30,
+        "jumlah_potret": 2,
+        "titik": [
+          {
+            "tanggal": "2026-10-14T08:56:52Z",
+            "status": 200,
+            "rating": 4.1,
+            "ulasan": 57,
+            "skala": 5.0
+          },
+          {
+            "tanggal": "2026-10-14T08:56:53Z",
+            "status": 200,
+            "rating": 4.1,
+            "ulasan": 57,
+            "skala": 5.0
+          }
+        ],
+        "rating": 4.1,
+        "skala": 5.0,
+        "rasio": 0.82,
+        "rating_awal": 4.1,
+        "perubahan_rating": 0.0,
+        "ulasan": 57,
+        "ulasan_awal": 57,
+        "ulasan_baru": 0,
+        "laju_mingguan": null,
+        "hari_terukur": 0.0,
+        "pangsa_ulasan": 19.3,
+        "tanda": [
+          "rating_rendah"
+        ],
+        "milik_sendiri": false,
+        "peringkat": 2
+      }
+    ],
+    "belum_terperiksa": [],
+    "catatan": []
+  },
+  "lokaseo": {
+    "ide_konten": [
+      {
+        "judul": "Menjawab ulasan negatif dengan benar",
+        "alasan": "Rating agregat berubah dari 4.6 menjadi 4.3.",
+        "kata_kunci_usulan": [
+          "menjawab ulasan negatif",
+          "keluhan pelanggan"
+        ],
+        "sumber": "LokaRadar"
+      },
+      {
+        "judul": "Cara meminta ulasan pelanggan tanpa melanggar aturan Google",
+        "alasan": "Jumlah ulasan bertambah 25 (dari 214 menjadi 239).",
+        "kata_kunci_usulan": [
+          "meminta ulasan google",
+          "ulasan pelanggan",
+          "reputasi lokal"
+        ],
+        "sumber": "LokaRadar"
+      },
+      {
+        "judul": "Cara membalas ulasan pelanggan dengan sopan dan tetap manusiawi",
+        "alasan": "Klinik Gigi Sehat Bogor: rating sekarang 4.3 (ambang 4.4).",
+        "kata_kunci_usulan": [
+          "membalas ulasan pelanggan",
+          "layanan pelanggan"
+        ],
+        "sumber": "LokaRadar"
+      },
+      {
+        "judul": "Cara membalas ulasan pelanggan dengan sopan dan tetap manusiawi",
+        "alasan": "Klinik Gigi Bogor Selatan: rating sekarang 4.1 (ambang 4.4).",
+        "kata_kunci_usulan": [
+          "membalas ulasan pelanggan",
+          "layanan pelanggan"
+        ],
+        "sumber": "LokaRadar"
+      }
+    ],
+    "cek_list": [
+      {
+        "judul": "Jalankan permintaan ulasan ke pelanggan lama",
+        "keterangan": "Jumlah ulasan bertambah 25 (dari 214 menjadi 239).",
+        "prioritas": "tinggi"
+      },
+      {
+        "judul": "Tindak lanjuti ulasan yang menurunkan rating",
+        "keterangan": "Klinik Gigi Sehat Bogor: rating 4.3, perubahan -0.3.",
+        "prioritas": "tinggi"
+      },
+      {
+        "judul": "Tindak lanjuti ulasan yang menurunkan rating",
+        "keterangan": "Klinik Gigi Bogor Selatan: rating 4.1, perubahan 0.0.",
+        "prioritas": "tinggi"
+      }
+    ],
+    "catatan": [
+      "Jenis usaha — Cantumkan jadwal praktik, layanan, dan nomor kontak yang aktif."
+    ]
+  },
+  "catatan_pemakaian": [
+    "Data diambil dari halaman publik tanpa login, dengan jeda sopan dan menghormati robots.txt.",
+    "Hanya angka agregat (rating, jumlah ulasan) yang disimpan; identitas penulis ulasan tidak diambil.",
+    "Angka dapat berubah kapan saja; verifikasi sebelum memakai untuk keputusan penting."
+  ]
+}

@@ -1,0 +1,169 @@
+PANDUAN UJI DI WINDOWS — 15 MENIT
+=================================
+
+Kenapa panduan ini ada
+----------------------
+Semua pengembangan sejauh ini dikerjakan dan diuji di Linux. Yang belum pernah
+disentuh mesin Windows sungguhan adalah: LokaSEO.exe, deteksi Microsoft Edge,
+penjadwalan Task Scheduler, dan cara mengunduh/mengimpor berkas daftar sasaran.
+Panduan ini menutup lubang itu — Anda yang menjalankannya, sekitar 15 menit.
+
+Kalau ada langkah yang hasilnya TIDAK seperti tulisan "Harusnya:", jangan
+diperbaiki dulu. Jalankan Langkah 10 untuk mengambil laporan kesiapan, lalu
+kirimkan laporannya. Itu justru hasil yang paling berguna.
+
+
+Yang disiapkan
+--------------
+- Berkas LokaSEO-Windows.zip (atau folder hasil build), sudah ada di komputer.
+- Tidak perlu memasang apa pun: Microsoft Edge sudah ada di Windows 10/11.
+
+
+LANGKAH 1 — Buka aplikasinya
+----------------------------
+1. Ekstrak zip ke folder yang mudah diingat, mis. C:\LokaSEO.
+   (Jangan dijalankan langsung dari dalam zip.)
+2. Klik dua kali LokaSEO.exe.
+3. Tunggu 5-10 detik. Jendela hitam (konsol) boleh dibiarkan terbuka.
+
+Harusnya: peramban terbuka sendiri ke alamat 127.0.0.1 (angka port bisa
+berbeda). Di kanan bawah ada tombol hijau "Radar pemantauan".
+
+Kalau tidak terbuka: buka peramban sendiri, ketik 127.0.0.1:3000
+(atau lihat angka yang tertulis di jendela hitam itu).
+
+
+LANGKAH 2 — Pastikan ruang kerja SEO jalan
+------------------------------------------
+1. Di halaman LokaSEO, klik "Proyek baru".
+2. Isi nama mis. "Toko Uji", kota "Bogor", lalu "Buat proyek".
+
+Harusnya: proyek muncul di daftar dan bisa dibuka. Isian ini juga yang nanti
+dibaca radar (jenis usaha, kota, nama).
+
+
+LANGKAH 3 — Buka halaman radar
+------------------------------
+1. Klik tombol hijau "Radar pemantauan" di kanan bawah.
+
+Harusnya: halaman "Radar pemantauan situs" terbuka, ada chip ringkasan di
+atas (Sasaran, Perubahan tercatat, Rendering).
+
+
+LANGKAH 4 — Cek kesiapan (bagian terpenting)
+--------------------------------------------
+1. Gulir ke bawah, bagian "Kesiapan aplikasi di komputer ini".
+2. Klik "Periksa kesiapan".
+3. Klik "Salin laporan".
+
+Harusnya: muncul daftar butir dengan tanda [LULUS] / [PERHATIAN] / [GAGAL],
+misalnya:
+
+    Versi aplikasi   : LokaSEO 0.1.19 · LokaRadar 0.1.0 · dijalankan dari paket (.exe)
+    Sistem           : Windows … · 64bit · Python 3.…
+    Folder data      : C:\Users\…\AppData\Roaming\LokaSEO (bisa ditulis, sisa ruang …)
+    Modul radar      : tersedia dari dalam paket
+    Peramban         : Microsoft Edge (141.…) · terpasang di sistem
+    Penjadwal        : aktif · harian pukul 07:00   (kalau sudah diaktifkan di Langkah 7)
+
+Yang perlu diperhatikan:
+- "Peramban: tidak ada peramban yang ditemukan" -> baris "YANG PERLU
+  DILAKUKAN" di bawahnya menyebutkan alasannya: berapa lokasi yang sudah
+  diperiksa, atau peramban ditemukan tetapi tidak bisa dijalankan. Sertakan
+  baris itu bila Anda melapor.
+- Butir [PERHATIAN] bukan kerusakan: artinya belum diatur atau belum dipakai.
+- Tempelkan laporan yang tersalin di percakapan bila ada yang [GAGAL].
+
+
+LANGKAH 5 — Uji rendering halaman ber-JavaScript
+------------------------------------------------
+1. Bagian "Peramban untuk halaman ber-JavaScript", klik "Uji rendering".
+
+Harusnya: muncul "Rendering berjalan lewat Microsoft Edge dalam … ms."
+(atau Chrome, sesuai peramban yang terdeteksi). Pengujian ini memakai halaman
+uji milik radar sendiri — tidak membuka situs siapa pun.
+
+Bila tombol "Uji rendering" berwarna pudar dan tidak bisa diklik:
+- Di kartu itu tertulis alasannya, mis. "Tidak ada berkas peramban di 34
+  lokasi yang diperiksa" atau "Peramban ditemukan di 1 lokasi, tetapi tidak
+  satupun yang bisa dijalankan".
+- Klik "Periksa ulang" bila Anda baru saja memasang Edge atau Chrome.
+- Buka "Yang sudah dicari (… lokasi)" untuk melihat daftar jalur yang
+  diperiksa radar beserta alasan tiap jalur dilewati.
+- Atau tunjuk sendiri berkasnya: buka Edge/Chrome, ketik edge://version
+  (atau chrome://version) di bilah alamat, salin baris "Executable Path",
+  tempel di kolom di kartu itu, lalu klik "Pakai berkas ini". Radar menguji
+  berkas itu dulu; baru dipakai setelah terbukti bisa merender.
+- Salin juga bagian "Peramban" dari laporan kesiapan (Langkah 4) bila Anda
+  mau melaporkan ke saya — di sana ikut tertulis alasannya.
+
+
+LANGKAH 6 — Periksa satu halaman nyata, dua kali
+------------------------------------------------
+1. Bagian "Tambah sasaran baru": isi alamat halaman milik usaha Anda sendiri
+   (atau satu halaman pesaing yang boleh dibaca umum), nama singkat, jenis
+   "Halaman". Klik "Tambah".
+2. Klik "Periksa sekarang". Tunggu selesai (beberapa detik).
+3. Tunggu 1-2 menit, klik "Periksa sekarang" lagi.
+
+Harusnya: setelah pemeriksaan kedua, bagian "Perubahan terakhir" mulai
+berbicara — atau menulis "Belum ada perubahan tercatat" bila halamannya memang
+tidak berubah. Keduanya jawaban yang benar.
+
+Kalau muncul "Situs menolak permintaan (403)" atau "robots.txt melarang":
+itu juga jawaban yang benar — radar memang menghormati penolakan situs.
+
+
+LANGKAH 7 — Penjadwalan otomatis
+--------------------------------
+1. Bagian "Pemeriksaan otomatis", pilih "Setiap hari", jam 07:00,
+   klik "Aktifkan".
+2. Buka Task Scheduler: tekan Windows+R, ketik taskschd.msc, Enter.
+   Cari tugas bernama "LokaSEO - Radar harian".
+
+Harusnya: tugas itu ada, dan di halaman radar muncul kalimat "Aktif: radar
+memeriksa sendiri setiap hari pukul 07:00" beserta perintah yang didaftarkan.
+
+Tips: tombol "Jalankan sekarang" di halaman itu memaksa pemeriksaan berjalan
+lewat penjadwal — cara cepat mengecek tanpa menunggu besok pagi.
+
+
+LANGKAH 8 — Unduh dan impor daftar sasaran
+------------------------------------------
+1. Bagian "Sasaran yang dipantau", klik "Unduh daftar sasaran".
+2. Periksa folder Unduhan: harus ada berkas sasaran-radar-TANGGAL.json.
+3. Klik "Impor daftar sasaran", pilih berkas tadi.
+4. Ulangi sekali lagi dengan berkas yang sama.
+
+Harusnya: impor pertama menjawab "… sudah ada." (karena isinya sama), dan
+kedua kalinya juga demikian. Tidak ada sasaran yang hilang, dan muncul kalimat
+"Belum ada halaman yang dihubungi…".
+
+
+LANGKAH 9 — Menghentikan aplikasi dengan benar
+----------------------------------------------
+1. Klik "Hentikan aplikasi" di halaman radar (atau ikon LokaSEO di kanan bawah
+   layar/tray -> Keluar).
+2. Periksa Task Manager: tidak boleh ada LokaSEO.exe yang masih berjalan.
+
+Harusnya: peramban menampilkan halaman "Aplikasi dihentikan", dan prosesnya
+benar-benar hilang. Riwayat radar tetap tersimpan.
+
+
+LANGKAH 10 — Kalau ada yang gagal: ambil laporan
+------------------------------------------------
+1. Buka Command Prompt di folder aplikasi (ketik cmd di bilah alamat Explorer).
+2. Jalankan:
+
+       LokaSEO-console.exe --kesiapan
+
+Harusnya: laporan kesiapan tercetak di layar, dan tersimpan juga sebagai
+laporan-kesiapan.txt di folder data (alamatnya tertulis di baris terakhir).
+
+Kirimkan berkas laporan-kesiapan.txt itu, ditambah keterangan:
+- langkah nomor berapa yang bermasalah,
+- apa yang tertulis di layar,
+- apakah muncul jendela galat dari Windows.
+
+Isi laporan itu tidak memuat kunci API, isi halaman, maupun daftar alamat
+yang Anda pantau — aman untuk dikirim.

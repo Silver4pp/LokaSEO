@@ -1,6 +1,10 @@
 services:
   open-seo:
-    image: ${OPEN_SEO_IMAGE:-ghcr.io/every-app/open-seo:latest}
+    # Build this fork; never pull the upstream app by default.
+    build:
+      context: .
+      dockerfile: deploy/docker/Dockerfile
+    image: lokaseo:local
     restart: unless-stopped
     # Forward EVERY .env value into the container. The explicit `environment:`
     # list below still wins for the values it names — without this, any .env
@@ -16,8 +20,8 @@ services:
       - PORT=${PORT:-3001}
       - ALLOWED_HOST=${ALLOWED_HOST:-}
       - AUTH_MODE=local_noauth
-      - OPENSEO_TELEMETRY_DISABLED=${OPENSEO_TELEMETRY_DISABLED:-}
-      - DO_NOT_TRACK=${DO_NOT_TRACK:-}
+      - OPENSEO_TELEMETRY_DISABLED=true
+      - DO_NOT_TRACK=1
       - DATAFORSEO_API_KEY=${DATAFORSEO_API_KEY}
       # Optional: AI features (the SAM agent). Without this the setup
       # gate in the app asks for the key, but nothing here would forward it.

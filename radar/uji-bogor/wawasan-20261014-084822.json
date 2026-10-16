@@ -1,0 +1,812 @@
+{
+  "schema": "lokaradar.insight.v1",
+  "dibuat_pada": "2026-10-14T08:48:22Z",
+  "sejak": "2026-09-14T08:48:22Z",
+  "profil": null,
+  "ringkasan": {
+    "sasaran": 6,
+    "perubahan": 6,
+    "per_tingkat": {
+      "info": 6
+    },
+    "per_jenis": {
+      "pemantauan_dimulai": 6
+    }
+  },
+  "sasaran": [
+    {
+      "url": "https://damessa.id/lokasi/",
+      "label": "Damessa Klinik Gigi (Bogor)",
+      "jenis": "reputasi",
+      "diperiksa_pada": "2026-10-14T08:47:31Z",
+      "status": 200,
+      "judul": "Klinik Dokter Gigi Terdekat & Terbaik | Daftar Lokasi Cabang Damessa",
+      "deskripsi": "Cari dokter gigi terdekat? Klinik gigi Terbaik Damessa memiliki 17 cabang yang tersebar di kota Bogor, Depok, Tangerang Selatan, dan Bekasi. Cek lokasinya di sini!",
+      "harga": [],
+      "harga_terendah": null,
+      "rating": null,
+      "data_terstruktur": [
+        "BreadcrumbList",
+        "ListItem"
+      ],
+      "ringkas_halaman": {
+        "jumlah_kata": 2687,
+        "judul_utama": 1,
+        "gambar_tanpa_alt": 1,
+        "noindex": false
+      },
+      "perubahan": [
+        {
+          "id": 1,
+          "target_id": 1,
+          "detected_at": "2026-10-14T08:47:31Z",
+          "type": "pemantauan_dimulai",
+          "severity": "info",
+          "message": "Pemantauan pertama: potret awal disimpan sebagai dasar pembanding.",
+          "before_value": "null",
+          "after_value": "{\"title\": \"Klinik Dokter Gigi Terdekat & Terbaik | Daftar Lokasi Cabang Damessa\", \"harga\": []}",
+          "seen": 0,
+          "url": "https://damessa.id/lokasi/",
+          "label": "Damessa Klinik Gigi (Bogor)",
+          "before": null,
+          "after": {
+            "title": "Klinik Dokter Gigi Terdekat & Terbaik | Daftar Lokasi Cabang Damessa",
+            "harga": []
+          }
+        }
+      ]
+    },
+    {
+      "url": "https://www.omdc.co.id/",
+      "label": "OMDC Dental (Bogor)",
+      "jenis": "reputasi",
+      "diperiksa_pada": "2026-10-14T08:47:33Z",
+      "status": 200,
+      "judul": "OMDC | Home",
+      "deskripsi": "OMDC, pionir dalam industri kesehatan gigi dan mulut di Indonesia, berdedikasi untuk\nmengubah persepsi masyarakat terhadap dokter gigi dan klinik gigi. Berpegang oleh tiga prinsip dasar—harga terjangkau,\nkonsep unik, dan sistem reservasi terjadwal—OMDC berupaya menciptakan lingkungan yang nyaman dan menyenangkan bagi\npasien.",
+      "harga": [
+        {
+          "amount": 100000.0,
+          "currency": "IDR",
+          "source": "teks",
+          "name": ""
+        },
+        {
+          "amount": 149000.0,
+          "currency": "IDR",
+          "source": "teks",
+          "name": ""
+        },
+        {
+          "amount": 200000.0,
+          "currency": "IDR",
+          "source": "teks",
+          "name": ""
+        },
+        {
+          "amount": 215000.0,
+          "currency": "IDR",
+          "source": "teks",
+          "name": ""
+        },
+        {
+          "amount": 325000.0,
+          "currency": "IDR",
+          "source": "teks",
+          "name": ""
+        },
+        {
+          "amount": 449000.0,
+          "currency": "IDR",
+          "source": "teks",
+          "name": ""
+        },
+        {
+          "amount": 649000.0,
+          "currency": "IDR",
+          "source": "teks",
+          "name": ""
+        },
+        {
+          "amount": 675000.0,
+          "currency": "IDR",
+          "source": "teks",
+          "name": ""
+        },
+        {
+          "amount": 699000.0,
+          "currency": "IDR",
+          "source": "teks",
+          "name": ""
+        },
+        {
+          "amount": 749000.0,
+          "currency": "IDR",
+          "source": "teks",
+          "name": ""
+        },
+        {
+          "amount": 799000.0,
+          "currency": "IDR",
+          "source": "teks",
+          "name": ""
+        },
+        {
+          "amount": 849000.0,
+          "currency": "IDR",
+          "source": "teks",
+          "name": ""
+        },
+        {
+          "amount": 899000.0,
+          "currency": "IDR",
+          "source": "teks",
+          "name": ""
+        },
+        {
+          "amount": 989000.0,
+          "currency": "IDR",
+          "source": "teks",
+          "name": ""
+        },
+        {
+          "amount": 999000.0,
+          "currency": "IDR",
+          "source": "teks",
+          "name": ""
+        },
+        {
+          "amount": 1000000.0,
+          "currency": "IDR",
+          "source": "teks",
+          "name": ""
+        },
+        {
+          "amount": 1039000.0,
+          "currency": "IDR",
+          "source": "teks",
+          "name": ""
+        },
+        {
+          "amount": 1049000.0,
+          "currency": "IDR",
+          "source": "teks",
+          "name": ""
+        },
+        {
+          "amount": 1050000.0,
+          "currency": "IDR",
+          "source": "teks",
+          "name": ""
+        },
+        {
+          "amount": 1099000.0,
+          "currency": "IDR",
+          "source": "teks",
+          "name": ""
+        }
+      ],
+      "harga_terendah": {
+        "amount": 100000.0,
+        "currency": "IDR",
+        "source": "teks",
+        "name": ""
+      },
+      "rating": null,
+      "data_terstruktur": [],
+      "ringkas_halaman": {
+        "jumlah_kata": 4781,
+        "judul_utama": 0,
+        "gambar_tanpa_alt": 83,
+        "noindex": false
+      },
+      "perubahan": [
+        {
+          "id": 2,
+          "target_id": 2,
+          "detected_at": "2026-10-14T08:47:33Z",
+          "type": "pemantauan_dimulai",
+          "severity": "info",
+          "message": "Pemantauan pertama: potret awal disimpan sebagai dasar pembanding.",
+          "before_value": "null",
+          "after_value": "{\"title\": \"OMDC | Home\", \"harga\": [{\"amount\": 100000.0, \"currency\": \"IDR\", \"source\": \"teks\", \"name\": \"\"}, {\"amount\": 149000.0, \"currency\": \"IDR\", \"source\": \"teks\", \"name\": \"\"}, {\"amount\": 200000.0, \"currency\": \"IDR\", \"source\": \"teks\", \"name\": \"\"}, {\"amount\": 215000.0, \"currency\": \"IDR\", \"source\": \"teks\", \"name\": \"\"}, {\"amount\": 325000.0, \"currency\": \"IDR\", \"source\": \"teks\", \"name\": \"\"}, {\"amount\": 449000.0, \"currency\": \"IDR\", \"source\": \"teks\", \"name\": \"\"}, {\"amount\": 649000.0, \"currency\": \"IDR\", \"source\": \"teks\", \"name\": \"\"}, {\"amount\": 675000.0, \"currency\": \"IDR\", \"source\": \"teks\", \"name\": \"\"}, {\"amount\": 699000.0, \"currency\": \"IDR\", \"source\": \"teks\", \"name\": \"\"}, {\"amount\": 749000.0, \"currency\": \"IDR\", \"source\": \"teks\", \"name\": \"\"}, {\"amount\": 799000.0, \"currency\": \"IDR\", \"source\": \"teks\", \"name\": \"\"}, {\"amount\": 849000.0, \"currency\": \"IDR\", \"source\": \"teks\", \"name\": \"\"}, {\"amount\": 899000.0, \"currency\": \"IDR\", \"source\": \"teks\", \"name\": \"\"}, {\"amount\": 989000.0, \"currency\": \"IDR\", \"source\": \"teks\", \"name\": \"\"}, {\"amount\": 999000.0, \"currency\": \"IDR\", \"source\": \"teks\", \"name\": \"\"}, {\"amount\": 1000000.0, \"currency\": \"IDR\", \"source\": \"teks\", \"name\": \"\"}, {\"amount\": 1039000.0, \"currency\": \"IDR\", \"source\": \"teks\", \"name\": \"\"}, {\"amount\": 1049000.0, \"currency\": \"IDR\", \"source\": \"teks\", \"name\": \"\"}, {\"amount\": 1050000.0, \"currency\": \"IDR\", \"source\": \"teks\", \"name\": \"\"}, {\"amount\": 1099000.0, \"currency\": \"IDR\", \"source\": \"teks\", \"name\": \"\"}]}",
+          "seen": 0,
+          "url": "https://www.omdc.co.id/",
+          "label": "OMDC Dental (Bogor)",
+          "before": null,
+          "after": {
+            "title": "OMDC | Home",
+            "harga": [
+              {
+                "amount": 100000.0,
+                "currency": "IDR",
+                "source": "teks",
+                "name": ""
+              },
+              {
+                "amount": 149000.0,
+                "currency": "IDR",
+                "source": "teks",
+                "name": ""
+              },
+              {
+                "amount": 200000.0,
+                "currency": "IDR",
+                "source": "teks",
+                "name": ""
+              },
+              {
+                "amount": 215000.0,
+                "currency": "IDR",
+                "source": "teks",
+                "name": ""
+              },
+              {
+                "amount": 325000.0,
+                "currency": "IDR",
+                "source": "teks",
+                "name": ""
+              },
+              {
+                "amount": 449000.0,
+                "currency": "IDR",
+                "source": "teks",
+                "name": ""
+              },
+              {
+                "amount": 649000.0,
+                "currency": "IDR",
+                "source": "teks",
+                "name": ""
+              },
+              {
+                "amount": 675000.0,
+                "currency": "IDR",
+                "source": "teks",
+                "name": ""
+              },
+              {
+                "amount": 699000.0,
+                "currency": "IDR",
+                "source": "teks",
+                "name": ""
+              },
+              {
+                "amount": 749000.0,
+                "currency": "IDR",
+                "source": "teks",
+                "name": ""
+              },
+              {
+                "amount": 799000.0,
+                "currency": "IDR",
+                "source": "teks",
+                "name": ""
+              },
+              {
+                "amount": 849000.0,
+                "currency": "IDR",
+                "source": "teks",
+                "name": ""
+              },
+              {
+                "amount": 899000.0,
+                "currency": "IDR",
+                "source": "teks",
+                "name": ""
+              },
+              {
+                "amount": 989000.0,
+                "currency": "IDR",
+                "source": "teks",
+                "name": ""
+              },
+              {
+                "amount": 999000.0,
+                "currency": "IDR",
+                "source": "teks",
+                "name": ""
+              },
+              {
+                "amount": 1000000.0,
+                "currency": "IDR",
+                "source": "teks",
+                "name": ""
+              },
+              {
+                "amount": 1039000.0,
+                "currency": "IDR",
+                "source": "teks",
+                "name": ""
+              },
+              {
+                "amount": 1049000.0,
+                "currency": "IDR",
+                "source": "teks",
+                "name": ""
+              },
+              {
+                "amount": 1050000.0,
+                "currency": "IDR",
+                "source": "teks",
+                "name": ""
+              },
+              {
+                "amount": 1099000.0,
+                "currency": "IDR",
+                "source": "teks",
+                "name": ""
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "url": "https://www.fdcdentalclinic.co.id/",
+      "label": "FDC Dental Clinic (Bogor)",
+      "jenis": "reputasi",
+      "diperiksa_pada": "2026-10-14T08:47:34Z",
+      "status": 200,
+      "judul": "FDC Dental Clinic",
+      "deskripsi": "Be the reason someone smiles.",
+      "harga": [],
+      "harga_terendah": null,
+      "rating": null,
+      "data_terstruktur": [],
+      "ringkas_halaman": {
+        "jumlah_kata": 3,
+        "judul_utama": 0,
+        "gambar_tanpa_alt": 0,
+        "noindex": false
+      },
+      "perubahan": [
+        {
+          "id": 3,
+          "target_id": 3,
+          "detected_at": "2026-10-14T08:47:34Z",
+          "type": "pemantauan_dimulai",
+          "severity": "info",
+          "message": "Pemantauan pertama: potret awal disimpan sebagai dasar pembanding.",
+          "before_value": "null",
+          "after_value": "{\"title\": \"FDC Dental Clinic\", \"harga\": []}",
+          "seen": 0,
+          "url": "https://www.fdcdentalclinic.co.id/",
+          "label": "FDC Dental Clinic (Bogor)",
+          "before": null,
+          "after": {
+            "title": "FDC Dental Clinic",
+            "harga": []
+          }
+        }
+      ]
+    },
+    {
+      "url": "https://bogorcoklat.com/",
+      "label": "Bogor Coklat",
+      "jenis": "harga",
+      "diperiksa_pada": "2026-10-14T08:47:43Z",
+      "status": 200,
+      "judul": "Bogor Coklat & Snack | Toko Oleh-oleh Coklat & Snack di kota Bogor",
+      "deskripsi": "",
+      "harga": [],
+      "harga_terendah": null,
+      "rating": null,
+      "data_terstruktur": [
+        "BreadcrumbList",
+        "ListItem",
+        "Organization",
+        "WebPage",
+        "WebSite"
+      ],
+      "ringkas_halaman": {
+        "jumlah_kata": 474,
+        "judul_utama": 0,
+        "gambar_tanpa_alt": 12,
+        "noindex": false
+      },
+      "perubahan": [
+        {
+          "id": 4,
+          "target_id": 5,
+          "detected_at": "2026-10-14T08:47:43Z",
+          "type": "pemantauan_dimulai",
+          "severity": "info",
+          "message": "Pemantauan pertama: potret awal disimpan sebagai dasar pembanding.",
+          "before_value": "null",
+          "after_value": "{\"title\": \"Bogor Coklat & Snack | Toko Oleh-oleh Coklat & Snack di kota Bogor\", \"harga\": []}",
+          "seen": 0,
+          "url": "https://bogorcoklat.com/",
+          "label": "Bogor Coklat",
+          "before": null,
+          "after": {
+            "title": "Bogor Coklat & Snack | Toko Oleh-oleh Coklat & Snack di kota Bogor",
+            "harga": []
+          }
+        }
+      ]
+    },
+    {
+      "url": "https://www.bogorraincake.com/",
+      "label": "Bogor Raincake",
+      "jenis": "harga",
+      "diperiksa_pada": "2026-10-14T08:47:44Z",
+      "status": 200,
+      "judul": "Motchill | Phim Hay | Phim Mới | HD Vietsub | Xem Online Nhanh",
+      "deskripsi": "Motchill - Website xem phim miễn phí hàng đầu VN. Xem phim nhanh, phim hay, phim mới. Cập nhật nhanh phim hot, phim bộ, phim lẻ theo từng quốc gia... HD Vietsub, Thuyết Minh và Lồng Tiếng.",
+      "harga": [],
+      "harga_terendah": null,
+      "rating": null,
+      "data_terstruktur": [
+        "BreadcrumbList",
+        "CollectionPage",
+        "ListItem",
+        "Organization",
+        "WebSite"
+      ],
+      "ringkas_halaman": {
+        "jumlah_kata": 1466,
+        "judul_utama": 0,
+        "gambar_tanpa_alt": 0,
+        "noindex": false
+      },
+      "perubahan": [
+        {
+          "id": 5,
+          "target_id": 6,
+          "detected_at": "2026-10-14T08:47:44Z",
+          "type": "pemantauan_dimulai",
+          "severity": "info",
+          "message": "Pemantauan pertama: potret awal disimpan sebagai dasar pembanding.",
+          "before_value": "null",
+          "after_value": "{\"title\": \"Motchill | Phim Hay | Phim Mới | HD Vietsub | Xem Online Nhanh\", \"harga\": []}",
+          "seen": 0,
+          "url": "https://www.bogorraincake.com/",
+          "label": "Bogor Raincake",
+          "before": null,
+          "after": {
+            "title": "Motchill | Phim Hay | Phim Mới | HD Vietsub | Xem Online Nhanh",
+            "harga": []
+          }
+        }
+      ]
+    },
+    {
+      "url": "https://lumasenja.com/id-id/",
+      "label": "Luma Senja Villa (Bogor)",
+      "jenis": "reputasi",
+      "diperiksa_pada": "2026-10-14T08:47:44Z",
+      "status": 200,
+      "judul": "Luma Senja Villa, Bogor - situs resmi hotel",
+      "deskripsi": "Menawarkan liburan kerja yang tenang di Puncak Dua, Bogor dan sempurna untuk pekerjaan remote, rapat, menginap, dan bulan madu, Luma Senja Villa adalah tempat di mana Anda dapat menikmati masa inap yang damai dan nyaman.",
+      "harga": [],
+      "harga_terendah": null,
+      "rating": {
+        "value": 9.9,
+        "count": 784,
+        "scale": 10.0
+      },
+      "data_terstruktur": [
+        "Hotel",
+        "ItemList",
+        "ListItem",
+        "WebPage",
+        "WebSite"
+      ],
+      "ringkas_halaman": {
+        "jumlah_kata": 1171,
+        "judul_utama": 1,
+        "gambar_tanpa_alt": 3,
+        "noindex": false
+      },
+      "perubahan": [
+        {
+          "id": 6,
+          "target_id": 7,
+          "detected_at": "2026-10-14T08:47:44Z",
+          "type": "pemantauan_dimulai",
+          "severity": "info",
+          "message": "Pemantauan pertama: potret awal disimpan sebagai dasar pembanding.",
+          "before_value": "null",
+          "after_value": "{\"title\": \"Luma Senja Villa, Bogor - situs resmi hotel\", \"harga\": []}",
+          "seen": 0,
+          "url": "https://lumasenja.com/id-id/",
+          "label": "Luma Senja Villa (Bogor)",
+          "before": null,
+          "after": {
+            "title": "Luma Senja Villa, Bogor - situs resmi hotel",
+            "harga": []
+          }
+        }
+      ]
+    }
+  ],
+  "reputasi": {
+    "periode_hari": 30,
+    "dibuat_pada": "2026-10-14T08:48:22Z",
+    "usaha": "",
+    "jenis_usaha": "",
+    "ambang_rating": 4.0,
+    "ambang_laju_mingguan": 1.0,
+    "ringkasan": {
+      "usaha": 6,
+      "dengan_rating": 1,
+      "rata_rata_rating": 9.9,
+      "rata_rata_setara_5": 4.95,
+      "total_ulasan": 784,
+      "total_ulasan_baru": null,
+      "tanpa_rating": 5
+    },
+    "peringkat": [
+      {
+        "target_id": 7,
+        "label": "Luma Senja Villa (Bogor)",
+        "url": "https://lumasenja.com/id-id/",
+        "jenis": "reputasi",
+        "sumber": "halaman",
+        "periode_hari": 30,
+        "jumlah_potret": 1,
+        "titik": [
+          {
+            "tanggal": "2026-10-14T08:47:44Z",
+            "status": 200,
+            "rating": 9.9,
+            "ulasan": 784,
+            "skala": 10.0
+          }
+        ],
+        "rating": 9.9,
+        "skala": 10.0,
+        "rasio": 0.99,
+        "rating_awal": 9.9,
+        "perubahan_rating": null,
+        "ulasan": 784,
+        "ulasan_awal": 784,
+        "ulasan_baru": null,
+        "laju_mingguan": null,
+        "hari_terukur": null,
+        "pangsa_ulasan": 100.0,
+        "tanda": [
+          "data_kurang"
+        ],
+        "milik_sendiri": false,
+        "peringkat": 1
+      }
+    ],
+    "perhatian": [
+      {
+        "target_id": 1,
+        "label": "Damessa Klinik Gigi (Bogor)",
+        "url": "https://damessa.id/lokasi/",
+        "jenis": "reputasi",
+        "sumber": "halaman",
+        "periode_hari": 30,
+        "jumlah_potret": 1,
+        "titik": [
+          {
+            "tanggal": "2026-10-14T08:47:31Z",
+            "status": 200,
+            "rating": null,
+            "ulasan": null,
+            "skala": null
+          }
+        ],
+        "rating": null,
+        "skala": null,
+        "rasio": null,
+        "rating_awal": null,
+        "perubahan_rating": null,
+        "ulasan": null,
+        "ulasan_awal": null,
+        "ulasan_baru": null,
+        "laju_mingguan": null,
+        "hari_terukur": null,
+        "pangsa_ulasan": null,
+        "tanda": [
+          "belum_ada_rating",
+          "data_kurang"
+        ],
+        "milik_sendiri": false,
+        "peringkat": null
+      },
+      {
+        "target_id": 2,
+        "label": "OMDC Dental (Bogor)",
+        "url": "https://www.omdc.co.id/",
+        "jenis": "reputasi",
+        "sumber": "halaman",
+        "periode_hari": 30,
+        "jumlah_potret": 1,
+        "titik": [
+          {
+            "tanggal": "2026-10-14T08:47:33Z",
+            "status": 200,
+            "rating": null,
+            "ulasan": null,
+            "skala": null
+          }
+        ],
+        "rating": null,
+        "skala": null,
+        "rasio": null,
+        "rating_awal": null,
+        "perubahan_rating": null,
+        "ulasan": null,
+        "ulasan_awal": null,
+        "ulasan_baru": null,
+        "laju_mingguan": null,
+        "hari_terukur": null,
+        "pangsa_ulasan": null,
+        "tanda": [
+          "belum_ada_rating",
+          "data_kurang"
+        ],
+        "milik_sendiri": false,
+        "peringkat": null
+      },
+      {
+        "target_id": 3,
+        "label": "FDC Dental Clinic (Bogor)",
+        "url": "https://www.fdcdentalclinic.co.id/",
+        "jenis": "reputasi",
+        "sumber": "halaman",
+        "periode_hari": 30,
+        "jumlah_potret": 1,
+        "titik": [
+          {
+            "tanggal": "2026-10-14T08:47:34Z",
+            "status": 200,
+            "rating": null,
+            "ulasan": null,
+            "skala": null
+          }
+        ],
+        "rating": null,
+        "skala": null,
+        "rasio": null,
+        "rating_awal": null,
+        "perubahan_rating": null,
+        "ulasan": null,
+        "ulasan_awal": null,
+        "ulasan_baru": null,
+        "laju_mingguan": null,
+        "hari_terukur": null,
+        "pangsa_ulasan": null,
+        "tanda": [
+          "belum_ada_rating",
+          "data_kurang"
+        ],
+        "milik_sendiri": false,
+        "peringkat": null
+      },
+      {
+        "target_id": 5,
+        "label": "Bogor Coklat",
+        "url": "https://bogorcoklat.com/",
+        "jenis": "harga",
+        "sumber": "halaman",
+        "periode_hari": 30,
+        "jumlah_potret": 1,
+        "titik": [
+          {
+            "tanggal": "2026-10-14T08:47:43Z",
+            "status": 200,
+            "rating": null,
+            "ulasan": null,
+            "skala": null
+          }
+        ],
+        "rating": null,
+        "skala": null,
+        "rasio": null,
+        "rating_awal": null,
+        "perubahan_rating": null,
+        "ulasan": null,
+        "ulasan_awal": null,
+        "ulasan_baru": null,
+        "laju_mingguan": null,
+        "hari_terukur": null,
+        "pangsa_ulasan": null,
+        "tanda": [
+          "belum_ada_rating",
+          "data_kurang"
+        ],
+        "milik_sendiri": false,
+        "peringkat": null
+      },
+      {
+        "target_id": 6,
+        "label": "Bogor Raincake",
+        "url": "https://www.bogorraincake.com/",
+        "jenis": "harga",
+        "sumber": "halaman",
+        "periode_hari": 30,
+        "jumlah_potret": 1,
+        "titik": [
+          {
+            "tanggal": "2026-10-14T08:47:44Z",
+            "status": 200,
+            "rating": null,
+            "ulasan": null,
+            "skala": null
+          }
+        ],
+        "rating": null,
+        "skala": null,
+        "rasio": null,
+        "rating_awal": null,
+        "perubahan_rating": null,
+        "ulasan": null,
+        "ulasan_awal": null,
+        "ulasan_baru": null,
+        "laju_mingguan": null,
+        "hari_terukur": null,
+        "pangsa_ulasan": null,
+        "tanda": [
+          "belum_ada_rating",
+          "data_kurang"
+        ],
+        "milik_sendiri": false,
+        "peringkat": null
+      },
+      {
+        "target_id": 7,
+        "label": "Luma Senja Villa (Bogor)",
+        "url": "https://lumasenja.com/id-id/",
+        "jenis": "reputasi",
+        "sumber": "halaman",
+        "periode_hari": 30,
+        "jumlah_potret": 1,
+        "titik": [
+          {
+            "tanggal": "2026-10-14T08:47:44Z",
+            "status": 200,
+            "rating": 9.9,
+            "ulasan": 784,
+            "skala": 10.0
+          }
+        ],
+        "rating": 9.9,
+        "skala": 10.0,
+        "rasio": 0.99,
+        "rating_awal": 9.9,
+        "perubahan_rating": null,
+        "ulasan": 784,
+        "ulasan_awal": 784,
+        "ulasan_baru": null,
+        "laju_mingguan": null,
+        "hari_terukur": null,
+        "pangsa_ulasan": 100.0,
+        "tanda": [
+          "data_kurang"
+        ],
+        "milik_sendiri": false,
+        "peringkat": 1
+      }
+    ],
+    "belum_terperiksa": [
+      "Lapis Bogor Sangkuriang"
+    ],
+    "catatan": []
+  },
+  "lokaseo": {
+    "ide_konten": [],
+    "cek_list": [],
+    "catatan": [
+      "Damessa Klinik Gigi (Bogor): 1 gambar tanpa teks alternatif — periksa apakah situs Anda lebih rapi.",
+      "OMDC Dental (Bogor): 83 gambar tanpa teks alternatif — periksa apakah situs Anda lebih rapi.",
+      "Bogor Coklat: 12 gambar tanpa teks alternatif — periksa apakah situs Anda lebih rapi.",
+      "Luma Senja Villa (Bogor): 3 gambar tanpa teks alternatif — periksa apakah situs Anda lebih rapi.",
+      "Damessa Klinik Gigi (Bogor): belum ada rating terbaca. Pastikan halaman yang dipantau memang memuat data rating, atau pakai sumber resmi Google Places API.",
+      "OMDC Dental (Bogor): belum ada rating terbaca. Pastikan halaman yang dipantau memang memuat data rating, atau pakai sumber resmi Google Places API.",
+      "FDC Dental Clinic (Bogor): belum ada rating terbaca. Pastikan halaman yang dipantau memang memuat data rating, atau pakai sumber resmi Google Places API.",
+      "Bogor Coklat: belum ada rating terbaca. Pastikan halaman yang dipantau memang memuat data rating, atau pakai sumber resmi Google Places API.",
+      "Bogor Raincake: belum ada rating terbaca. Pastikan halaman yang dipantau memang memuat data rating, atau pakai sumber resmi Google Places API."
+    ]
+  },
+  "catatan_pemakaian": [
+    "Data diambil dari halaman publik tanpa login, dengan jeda sopan dan menghormati robots.txt.",
+    "Hanya angka agregat (rating, jumlah ulasan) yang disimpan; identitas penulis ulasan tidak diambil.",
+    "Angka dapat berubah kapan saja; verifikasi sebelum memakai untuk keputusan penting."
+  ]
+}

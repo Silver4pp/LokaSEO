@@ -41,6 +41,7 @@ export default defineConfig(({ mode, command }) => {
   const showDevtools = env.VITE_SHOW_DEVTOOLS !== "false";
   const allowedHosts = [
     env.ALLOWED_HOST,
+    ...(mode === "development" ? [".e2b.app"] : []),
     env.BETTER_AUTH_URL ? new URL(env.BETTER_AUTH_URL).hostname : undefined,
   ].filter((host): host is string => Boolean(host));
   const emitSourcemaps = env.POSTHOG_SOURCEMAPS === "true";
@@ -58,6 +59,7 @@ export default defineConfig(({ mode, command }) => {
       "TURNSTILE_SITE_KEY",
     ],
     server: {
+      host: "0.0.0.0",
       allowedHosts,
       port,
     },

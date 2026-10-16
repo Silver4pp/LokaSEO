@@ -1,0 +1,8 @@
+Sumber: https://github.com/every-app/open-seo
+Commit upstream: 89e5a00717cdf049b7c2b4e29646edb3a7d4995b
+
+Modifikasi LokaSEO: 2026-10-12
+Lisensi upstream: MIT, Copyright (c) 2026 Ben Senescu. Lihat LICENSE.
+
+Penjelasan bahasa Indonesia: ../../ASAL-PROYEK.md (dari direktori berkas ini).
+LokaSEO adalah pengembangan turunan, bukan kode yang seluruhnya dibuat dari nol.
